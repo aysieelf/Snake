@@ -9,6 +9,7 @@ class Snake:
             (c.GRID_SIZE // 2 + 1, c.GRID_SIZE // 2),  # one cell to the left
         ]
         self._direction = c.LEFT
+        self._direction_changed = False
 
     @property
     def length(self):
@@ -21,6 +22,10 @@ class Snake:
     @property
     def direction(self):
         return self._direction
+
+    @property
+    def direction_changed(self):
+        return self._direction_changed
 
     def get_head_position(self):
         return self.positions[0]
@@ -38,6 +43,7 @@ class Snake:
         tail = self._positions.pop()
         new_head = self._calculate_new_head()
         self._positions.insert(0, new_head)
+        self._direction_changed = False
         return tail
 
     def grow(self, tail):
@@ -51,6 +57,9 @@ class Snake:
         )
 
     def change_direction(self, new_dir):
+        if self._direction_changed:
+            return False
+
         if (
             new_dir[0] + self._direction[0] == 0
             and new_dir[1] + self._direction[1] == 0
@@ -61,4 +70,5 @@ class Snake:
             return False
 
         self._direction = new_dir
+        self._direction_changed = True
         return True
