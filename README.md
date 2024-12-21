@@ -60,11 +60,11 @@ python main.py
 - Space - Resume game
 
 ## ⏳ Current Progress
-[▓░░░░░░░░░] 10%
+[▓▓░░░░░░░░] 20%
 
 - [x] Project setup
 - [x] Snake implementation
-- [ ] Food & Growth mechanics
+- [x] Food & Growth mechanics
 - [ ] Collision & Game Over
 - [ ] Pause & Restart
 - [ ] UI & Polish
@@ -90,10 +90,11 @@ python main.py
 ## 📚 What I Learned
 - pygame.time.Clock for frame rate control - `pygame.time.Clock.tick()`
   - this is used to control the speed of the game
-  - 
+
 ## 💡 First Time Achievements
 - First time implementing a grid-based movement system
-- 
+- First time using PyGame's `pygame.time.Clock` for frame rate control
+
 ## 📸 Screenshots
 ...
 
