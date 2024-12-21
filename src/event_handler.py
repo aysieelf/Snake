@@ -1,6 +1,8 @@
-from src.game_state import GameState
-
 import pygame
+
+from src.game_state import GameState
+from src import constants as c
+
 
 
 class EventHandler:
@@ -50,4 +52,12 @@ class EventHandler:
             self.game_state.reset()
         elif event.key == pygame.K_q:
             return False
+        elif event.key == pygame.K_w or event.key == pygame.K_UP:
+            self.game_state.snake.change_direction(c.UP)
+        elif event.key == pygame.K_a or event.key == pygame.K_LEFT:
+            self.game_state.snake.change_direction(c.LEFT)
+        elif event.key == pygame.K_s or event.key == pygame.K_DOWN:
+            self.game_state.snake.change_direction(c.DOWN)
+        elif event.key == pygame.K_d or event.key == pygame.K_RIGHT:
+            self.game_state.snake.change_direction(c.RIGHT)
         return True
