@@ -62,8 +62,8 @@ python main.py
 ## ⏳ Current Progress
 [▓░░░░░░░░░] 10%
 
-- [ ] Project setup
-- [ ] Snake implementation
+- [x] Project setup
+- [x] Snake implementation
 - [ ] Food & Growth mechanics
 - [ ] Collision & Game Over
 - [ ] Pause & Restart
