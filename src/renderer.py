@@ -90,8 +90,3 @@ class Renderer:
                 (head_pos[0] + c.EYE_OFFSET_NEAR, head_pos[1] + c.EYE_DEPTH),
                 (head_pos[0] + c.EYE_OFFSET_FAR, head_pos[1] + c.EYE_DEPTH),
             )
-
-
-
-
-        return sna
