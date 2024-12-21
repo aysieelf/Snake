@@ -12,9 +12,10 @@ RIGHT = (1, 0)
 EYE_SIZE = 4
 EYE_OFFSET_SIDE_FAR = 1
 EYE_OFFSET_SIDE_NEAR = 13
-EYE_OFFSET_NEAR = 3
-EYE_OFFSET_FAR = 17
+EYE_OFFSET_NEAR = 2
+EYE_OFFSET_FAR = 14
 EYE_DEPTH = 4
+EYE_DEPTH_UP = 1
 
 # COLORS -----------------------------------------------------------------------
 PASTEL_GREEN = (167, 217, 172)  # for snake

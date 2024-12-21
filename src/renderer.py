@@ -79,13 +79,13 @@ class Renderer:
             )
         elif direction == c.UP:
             return (
-                (head_pos[0] + c.EYE_OFFSET_NEAR, head_pos[1] - c.EYE_DEPTH),
-                (head_pos[0] + c.EYE_OFFSET_FAR, head_pos[1] - c.EYE_DEPTH),
+                (head_pos[0] + c.EYE_OFFSET_NEAR, head_pos[1] - c.EYE_DEPTH_UP),
+                (head_pos[0] + c.EYE_OFFSET_FAR, head_pos[1] - c.EYE_DEPTH_UP),
             )
         elif direction == c.RIGHT:
             return (
-                (head_pos[0] - c.EYE_DEPTH, head_pos[1] - c.EYE_OFFSET_SIDE_FAR),
-                (head_pos[0] - 4, head_pos[1] + c.EYE_OFFSET_SIDE_NEAR),
+                (head_pos[0] + c.CELL_SIZE - c.EYE_DEPTH, head_pos[1] - c.EYE_OFFSET_SIDE_FAR),
+                (head_pos[0] + c.CELL_SIZE - c.EYE_DEPTH, head_pos[1] + c.EYE_OFFSET_SIDE_NEAR),
             )
         elif direction == c.DOWN:
             return (
