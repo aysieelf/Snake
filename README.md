@@ -63,10 +63,11 @@ python main.py
 [▓░░░░░░░░░] 10%
 
 - [ ] Project setup
-- [ ] Basic game mechanics
-- [ ] Win/Draw logic
-- [ ] UI implementation
-- [ ] Final polish
+- [ ] Snake implementation
+- [ ] Food & Growth mechanics
+- [ ] Collision & Game Over
+- [ ] Pause & Restart
+- [ ] UI & Polish
 
 ## 🎯 Project Goals
 - Create a classic Snake game with smooth controls
