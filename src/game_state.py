@@ -16,7 +16,7 @@ class GameState:
         self.score = 0
 
         self._frame_count = 0
-        self._move_delay = 30
+        self._move_delay = 20
 
         self._food_pos = [0, 0]
         self._new_food = True
@@ -55,18 +55,18 @@ class GameState:
         self._frame_count += 1
         self._update_speed()
 
-        self._update_movement()
-        self._handle_food_collision()
-        self._update_bonus_food()
+        tail = self._update_movement()
+        self._handle_food_collision(tail)
+        self._update_bonus_food(tail)
 
-    def _update_bonus_food(self):
+    def _update_bonus_food(self, tail):
         self._bonus_food_spawn_timer += 1 if self._bonus_food_pos is None else 0
 
         if self._bonus_food_spawn_timer == c.BONUS_FOOD_SPAWN_INTERVAL:
             self._spawn_bonus_food()
 
         if self._bonus_food_active:
-            self._handle_bonus_food()
+            self._handle_bonus_food(tail)
             if self._bonus_food_duration_timer >= c.BONUS_FOOD_DURATION:
                 self._deactivate_bonus_food()
 
@@ -76,14 +76,14 @@ class GameState:
         self._bonus_food_active = True
         self._bonus_food_duration_timer = 0
 
-    def _handle_bonus_food(self):
+    def _handle_bonus_food(self, tail):
         if self.snake.get_head_position() == tuple(self._bonus_food_pos):
-            self._collect_bonus_food()
+            self._collect_bonus_food(tail)
         else:
             self._bonus_food_duration_timer += 1
 
-    def _collect_bonus_food(self):
-        self.snake.grow()
+    def _collect_bonus_food(self, tail):
+        self.snake.grow(tail)
         self.score += 3
         self._deactivate_bonus_food()
 
@@ -92,22 +92,24 @@ class GameState:
         self._bonus_food_pos = None
         self._bonus_food_duration_timer = 0
 
-    def _handle_food_collision(self):
+    def _handle_food_collision(self, tail):
         if self.snake.get_head_position() == tuple(self._food_pos):
-            self.snake.grow()
+            self.snake.grow(tail)
             self.score += 1
             self._new_food = True
 
     def _update_movement(self):
         if self._frame_count >= self._move_delay:
-            self.snake.move()
+            tail = self.snake.move()
             self._frame_count = 0
+            return tail
 
     def _update_speed(self):
         """Adjust snake speed based on score"""
-        base_delay = 30
+        base_delay = 20
+        current_delay = self._move_delay
+        delay_step = current_delay // 10
         min_delay = 5
-        delay_step = 5
 
         new_delay = base_delay - (self.score // 5) * delay_step
         self._move_delay = max(min_delay, new_delay)

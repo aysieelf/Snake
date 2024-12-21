@@ -35,14 +35,13 @@ class Snake:
         return tuple(display_positions)
 
     def move(self):
-        self._positions.pop()
+        tail = self._positions.pop()
         new_head = self._calculate_new_head()
         self._positions.insert(0, new_head)
+        return tail
 
-    def grow(self):
-        new_head = self._calculate_new_head()
-        self._positions.insert(0, new_head)
-        self._length += 1
+    def grow(self, tail):
+        self._positions.append(tail)
 
     def _calculate_new_head(self):
         curr_head_x, curr_head_y = self._positions[0]
