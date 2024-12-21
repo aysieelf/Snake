@@ -1,8 +1,7 @@
-import pygame
-
-from src.game_state import GameState
 from src import constants as c
+from src.game_state import GameState
 
+import pygame
 
 
 class EventHandler:

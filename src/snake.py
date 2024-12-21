@@ -52,7 +52,10 @@ class Snake:
         )
 
     def change_direction(self, new_dir):
-        if new_dir[0] + self._direction[0] == 0 and new_dir[1] + self._direction[1] == 0:
+        if (
+            new_dir[0] + self._direction[0] == 0
+            and new_dir[1] + self._direction[1] == 0
+        ):
             return False
 
         if new_dir not in [c.UP, c.LEFT, c.RIGHT, c.DOWN]:
@@ -60,4 +63,3 @@ class Snake:
 
         self._direction = new_dir
         return True
-
