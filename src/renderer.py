@@ -22,6 +22,6 @@ class Renderer:
         Args:
             game_state (GameState): The current game state
         """
-        self.screen.fill(c.BACKGROUND_COLOR)
+        self.screen.fill(c.BACKGROUND)
 
         pygame.display.flip()
