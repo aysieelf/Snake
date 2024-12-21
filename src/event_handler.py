@@ -1,6 +1,6 @@
-import pygame
-
 from src.game_state import GameState
+
+import pygame
 
 
 class EventHandler:

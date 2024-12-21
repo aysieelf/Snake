@@ -1,14 +1,12 @@
-import pygame
-
 from src.event_handler import EventHandler
 from src.game_state import GameState
 from src.renderer import Renderer
 
+import pygame
+
 
 def game_loop(
-        screen: pygame.Surface,
-        game_state: GameState,
-        clock: pygame.time.Clock
+    screen: pygame.Surface, game_state: GameState, clock: pygame.time.Clock
 ) -> None:
     """
     Handles the game loop
