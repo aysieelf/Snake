@@ -3,8 +3,22 @@ WINDOW_SIZE = 600  # width and height of the window
 GRID_SIZE = 30  # number of cells in the grid (30x30)
 CELL_SIZE = WINDOW_SIZE // GRID_SIZE  # size of each cell (20x20)
 
+# SNAKE -----------------------------------------------------------------------
+UP = (0, -1)
+DOWN = (0, 1)
+LEFT = (-1, 0)
+RIGHT = (1, 0)
+
+EYE_SIZE = 4
+EYE_OFFSET_SIDE_FAR = 1
+EYE_OFFSET_SIDE_NEAR = 13
+EYE_OFFSET_NEAR = 3
+EYE_OFFSET_FAR = 17
+EYE_DEPTH = 4
+
 # COLORS -----------------------------------------------------------------------
 PASTEL_GREEN = (167, 217, 172)  # for snake
+DARKER_PASTEL_GREEN = (126, 168, 130)  # for head of snake
 PASTEL_PINK = (255, 198, 214)  # for food
 PASTEL_BLUE = (173, 216, 230)  # for special effects
 PASTEL_YELLOW = (253, 253, 150)  # for special effects
