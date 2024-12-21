@@ -88,9 +88,11 @@ python main.py
 - [User Guide](docs/user-guide.md) - Detailed instructions on how to play the game
 
 ## 📚 What I Learned
-- ...
+- pygame.time.Clock for frame rate control - `pygame.time.Clock.tick()`
+  - this is used to control the speed of the game
+  - 
 ## 💡 First Time Achievements
-- ...
+- First time implementing a grid-based movement system
 - 
 ## 📸 Screenshots
 ...

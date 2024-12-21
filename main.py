@@ -14,10 +14,11 @@ def main() -> None:
     screen = pygame.display.set_mode((c.WINDOW_SIZE, c.WINDOW_SIZE))
     pygame.display.set_caption("Snake")
     clock = pygame.time.Clock()
+    # TODO: Implement game speed change based on score
 
     game_state = GameState()
 
-    game_loop(screen, game_state)
+    game_loop(screen, game_state, clock)
 
     pygame.quit()
 
