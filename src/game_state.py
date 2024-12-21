@@ -1,6 +1,6 @@
+from src import constants as c
 from src.snake import Snake
 from src.utils import get_random_position
-from src import constants as c
 
 
 class GameState:
@@ -117,7 +117,6 @@ class GameState:
             self._new_food = False
             self._food_pos = self._validate_food_position()
 
-
     def _validate_food_position(self, bonus_food=False):
         attempts = 0
         max_attempts = 50
@@ -127,13 +126,17 @@ class GameState:
             new_pos_tuple = tuple(new_pos)
 
             if bonus_food:
-                if self.food_pos == new_pos_tuple or new_pos_tuple in self.snake.positions:
+                if (
+                    self.food_pos == new_pos_tuple
+                    or new_pos_tuple in self.snake.positions
+                ):
                     attempts += 1
                     continue
 
             else:
-                if (self._bonus_food_active and new_pos_tuple == self._bonus_food_pos) or \
-                        new_pos_tuple in self.snake.positions:
+                if (
+                    self._bonus_food_active and new_pos_tuple == self._bonus_food_pos
+                ) or new_pos_tuple in self.snake.positions:
                     attempts += 1
                     continue
 

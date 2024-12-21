@@ -22,7 +22,7 @@ FOOD_SIZE = CELL_SIZE  # size of the food
 BONUS_FOOD_SIZE = CELL_SIZE  # size of the bonus food
 
 BONUS_FOOD_SPAWN_INTERVAL = 1200  # 20 seconds * 60 FPS
-BONUS_FOOD_DURATION = 300        # 5 seconds * 60 FPS
+BONUS_FOOD_DURATION = 300  # 5 seconds * 60 FPS
 
 # COLORS -----------------------------------------------------------------------
 PASTEL_GREEN = (167, 217, 172)  # for snake
