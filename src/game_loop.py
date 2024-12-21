@@ -21,6 +21,7 @@ def game_loop(
 
     while True:
         clock.tick(60)
+        game_state.update()
         if not event_handler.handle_events():
             break
 
