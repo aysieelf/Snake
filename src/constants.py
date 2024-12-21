@@ -1,7 +1,7 @@
 # WINDOW -----------------------------------------------------------------------
 WINDOW_SIZE = 600  # width and height of the window
-GRID_SIZE = 60  # number of cells in the grid (60x60)
-CELL_SIZE = WINDOW_SIZE // GRID_SIZE  # size of each cell
+GRID_SIZE = 30  # number of cells in the grid (30x30)
+CELL_SIZE = WINDOW_SIZE // GRID_SIZE  # size of each cell (20x20)
 
 # COLORS -----------------------------------------------------------------------
 PASTEL_GREEN = (167, 217, 172)     # for snake
