@@ -1,7 +1,7 @@
 # WINDOW -----------------------------------------------------------------------
-WINDOW_SIZE = 600  # width and height of the window
-GRID_SIZE = 30  # number of cells in the grid (30x30)
-CELL_SIZE = WINDOW_SIZE // GRID_SIZE  # size of each cell (20x20)
+WINDOW_SIZE = 400  # width and height of the window
+CELL_SIZE = 20  # number of cells in the grid (30x30)
+GRID_SIZE = WINDOW_SIZE // CELL_SIZE  # size of each cell (20x20)
 
 # SNAKE -----------------------------------------------------------------------
 UP = (0, -1)
@@ -16,6 +16,13 @@ EYE_OFFSET_NEAR = 2
 EYE_OFFSET_FAR = 14
 EYE_DEPTH = 4
 EYE_DEPTH_UP = 1
+
+# FOOD ------------------------------------------------------------------------
+FOOD_SIZE = CELL_SIZE  # size of the food
+BONUS_FOOD_SIZE = CELL_SIZE  # size of the bonus food
+
+BONUS_FOOD_SPAWN_INTERVAL = 1200  # 20 seconds * 60 FPS
+BONUS_FOOD_DURATION = 300        # 5 seconds * 60 FPS
 
 # COLORS -----------------------------------------------------------------------
 PASTEL_GREEN = (167, 217, 172)  # for snake

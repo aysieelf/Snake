@@ -22,6 +22,7 @@ def game_loop(
     while True:
         clock.tick(60)
         game_state.update()
+        game_state.create_food()
         if not event_handler.handle_events():
             break
 
