@@ -1,9 +1,9 @@
-import pygame
-
 from src import constants as c
 from src.constants import CELL_SIZE
 from src.game_state import GameState
 from src.graphics import draw_rectangle
+
+import pygame
 
 
 class Renderer:
@@ -42,16 +42,18 @@ class Renderer:
             CELL_SIZE,
         )
 
-        snake_right_eye, snake_left_eye = self._get_eyes_positions(snake_head, snake.direction)
-        pygame.draw.rect(
-            self.screen,
-            c.TEXT_COLOR,
-            (snake_right_eye[0], snake_right_eye[1], c.EYE_SIZE, c.EYE_SIZE)
+        snake_right_eye, snake_left_eye = self._get_eyes_positions(
+            snake_head, snake.direction
         )
         pygame.draw.rect(
             self.screen,
             c.TEXT_COLOR,
-            (snake_left_eye[0], snake_left_eye[1], c.EYE_SIZE, c.EYE_SIZE)
+            (snake_right_eye[0], snake_right_eye[1], c.EYE_SIZE, c.EYE_SIZE),
+        )
+        pygame.draw.rect(
+            self.screen,
+            c.TEXT_COLOR,
+            (snake_left_eye[0], snake_left_eye[1], c.EYE_SIZE, c.EYE_SIZE),
         )
 
         for segment in snake_body:
@@ -61,7 +63,7 @@ class Renderer:
                 segment[0],
                 segment[1],
                 CELL_SIZE,
-                CELL_SIZE
+                CELL_SIZE,
             )
 
     def _get_eyes_positions(self, head_pos, direction):

@@ -12,7 +12,6 @@ class GameState:
     def __init__(self):
         self.snake = Snake()
 
-
     def reset(self) -> None:
         """
         Reset the game state
