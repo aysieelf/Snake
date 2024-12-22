@@ -60,13 +60,13 @@ python main.py
 - Space - Resume game
 
 ## ⏳ Current Progress
-[▓▓░░░░░░░░] 20%
+[▓▓▓▓▓░░░░░] 50%
 
 - [x] Project setup
 - [x] Snake implementation
 - [x] Food & Growth mechanics
-- [ ] Collision & Game Over
-- [ ] Pause & Restart
+- [x] Collision & Game Over
+- [x] Pause & Restart
 - [ ] UI & Polish
 
 ## 🎯 Project Goals
@@ -90,10 +90,19 @@ python main.py
 ## 📚 What I Learned
 - pygame.time.Clock for frame rate control - `pygame.time.Clock.tick()`
   - this is used to control the speed of the game
+- Grid-based movement system
+- Collision detection with walls and self
+- Game state management
+- Pause/Resume game functionality
+- Food spawning system
+- Clean code organization in game development
 
 ## 💡 First Time Achievements
 - First time implementing a grid-based movement system
 - First time using PyGame's `pygame.time.Clock` for frame rate control
+- First time implementing a pause/resume game functionality
+- First time implementing a food spawning system
+- First time implementing a growing snake mechanic
 
 ## 📸 Screenshots
 ...

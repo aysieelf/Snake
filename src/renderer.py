@@ -1,6 +1,6 @@
 from src import constants as c
 from src.game_state import GameState
-from src.graphics import draw_rectangle
+from src.graphics import draw_rectangle, draw_start_screen
 
 import pygame
 
@@ -25,12 +25,15 @@ class Renderer:
         """
         self.screen.fill(c.BACKGROUND)
 
-        self._render_snake(game_state.snake)
+        if game_state.start_screen:
+            draw_start_screen(self.screen)
+        else:
+            self._render_snake(game_state.snake)
 
-        self._render_food(game_state.food_pos)
+            self._render_food(game_state.food_pos)
 
-        if game_state.bonus_food_active:
-            self._render_food(game_state.bonus_food_pos, bonus_food=True)
+            if game_state.bonus_food_active:
+                self._render_food(game_state.bonus_food_pos, bonus_food=True)
 
         pygame.display.flip()
 

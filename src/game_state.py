@@ -28,6 +28,7 @@ class GameState:
 
         self._game_over = False
         self._paused = False
+        self._start_screen = True
 
     @property
     def food_pos(self):
@@ -60,6 +61,10 @@ class GameState:
     @property
     def paused(self):
         return self._paused
+
+    @property
+    def start_screen(self):
+        return self._start_screen
 
     def update(self):
         """Update game state including snake movement based on current speed"""
@@ -168,6 +173,12 @@ class GameState:
 
             return new_pos
 
+    def start_game(self):
+        self._start_screen = False
+
+    def exit_to_start_screen(self):
+        self._start_screen = True
+
     def pause_game(self):
         self._paused = True
 
@@ -190,3 +201,4 @@ class GameState:
         self._bonus_food_duration_timer = 0
         self._bonus_food_active = False
         self._game_over = False
+        self._paused = False

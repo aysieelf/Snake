@@ -3,6 +3,8 @@ from src.game_state import GameState
 
 import pygame
 
+from src.graphics import get_start_button_rect
+
 
 class EventHandler:
     """
@@ -33,6 +35,9 @@ class EventHandler:
                 continue_game = self._handle_keyboard(event)
                 if not continue_game:
                     return False
+
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                self._handle_start_screen_click()
         return True
 
     def _handle_keyboard(self, event: pygame.event.Event) -> bool:
@@ -42,7 +47,13 @@ class EventHandler:
         Args:
             event (pygame.event): The event to handle
                 - R key: Resets the game
-                - Q key: Exits the game
+                - Q key: Exits the game to start screen or closes the game
+                - W key or UP arrow key: Move the snake up
+                - A key or LEFT arrow key: Move the snake left
+                - S key or DOWN arrow key: Move the snake down
+                - D key or RIGHT arrow key: Move the snake right
+                - SPACE key: Pause or continue the game
+
 
         Returns:
             bool: True if the game should continue, False if the game should end
@@ -53,7 +64,11 @@ class EventHandler:
 
         # Exit the game
         elif event.key == pygame.K_q:
-            return False
+            if not self.game_state.start_screen:
+                self.game_state.reset()
+                self.game_state.exit_to_start_screen()
+            else:
+                return False
 
         # Change the direction of the snake
         elif event.key == pygame.K_w or event.key == pygame.K_UP:
@@ -74,3 +89,11 @@ class EventHandler:
             )
 
         return True
+
+    def _handle_start_screen_click(self) -> None:
+        """
+        Handle the click event in the start screen
+        """
+        button_rect = get_start_button_rect()
+        if button_rect.collidepoint(pygame.mouse.get_pos()):
+            self.game_state.start_game()
