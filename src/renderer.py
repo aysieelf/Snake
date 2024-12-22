@@ -37,6 +37,16 @@ class Renderer:
     def _render_snake(self, snake):
         """Render the snake on the screen"""
         snake_head, *snake_body = snake.get_snake_body_positions()
+        for segment in snake_body:
+            draw_rectangle(
+                self.screen,
+                c.PASTEL_GREEN,
+                segment[0],
+                segment[1],
+                c.CELL_SIZE,
+                c.CELL_SIZE,
+            )
+
         draw_rectangle(
             self.screen,
             c.DARKER_PASTEL_GREEN,
@@ -59,16 +69,6 @@ class Renderer:
             c.TEXT_COLOR,
             (snake_left_eye[0], snake_left_eye[1], c.EYE_SIZE, c.EYE_SIZE),
         )
-
-        for segment in snake_body:
-            draw_rectangle(
-                self.screen,
-                c.PASTEL_GREEN,
-                segment[0],
-                segment[1],
-                c.CELL_SIZE,
-                c.CELL_SIZE,
-            )
 
     def _get_eyes_positions(self, head_pos, direction):
         """
