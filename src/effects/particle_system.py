@@ -1,6 +1,6 @@
-import pygame
-
 from src.effects.particle import Particle
+
+import pygame
 
 
 class ParticleSystem:
@@ -13,7 +13,6 @@ class ParticleSystem:
         for _ in range(self.num_particles):
             self.particles.append(Particle(x, y, color))
 
-
     def update(self):
         self.particles = [particle for particle in self.particles if particle.update()]
 
@@ -23,5 +22,5 @@ class ParticleSystem:
                 self.screen,
                 particle.color,
                 (int(particle.x), int(particle.y)),
-                particle.size
+                particle.size,
             )

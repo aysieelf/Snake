@@ -1,4 +1,5 @@
-from random import uniform, randint
+from random import randint, uniform
+
 
 class Particle:
     def __init__(self, x, y, color):

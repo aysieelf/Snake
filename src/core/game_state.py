@@ -22,7 +22,6 @@ class GameState:
         self.particle_system = ParticleSystem(None)
         self.food_system = FoodSystem(self.snake, self.particle_system)
 
-
         self._game_over = False
         self._paused = False
         self._start_screen = True
@@ -53,8 +52,10 @@ class GameState:
                 self.snake.grow(tail)
                 self.score += 1
                 self.food_system._new_food = True
-                food_pixel_pos = (self.food_system.food_pos[0] * c.CELL_SIZE,
-                                  self.food_system.food_pos[1] * c.CELL_SIZE)
+                food_pixel_pos = (
+                    self.food_system.food_pos[0] * c.CELL_SIZE,
+                    self.food_system.food_pos[1] * c.CELL_SIZE,
+                )
                 self.particle_system.spawn_particles(*food_pixel_pos, c.PASTEL_PINK)
 
             if self.food_system.update_bonus_food(tail):

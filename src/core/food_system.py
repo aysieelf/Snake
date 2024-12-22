@@ -61,8 +61,10 @@ class FoodSystem:
             return False
 
     def _collect_bonus_food(self, tail):
-        bonus_pixel_pos = (self._bonus_food_pos[0] * c.CELL_SIZE,
-                           self._bonus_food_pos[1] * c.CELL_SIZE)
+        bonus_pixel_pos = (
+            self._bonus_food_pos[0] * c.CELL_SIZE,
+            self._bonus_food_pos[1] * c.CELL_SIZE,
+        )
         self._particle_system.spawn_particles(*bonus_pixel_pos, c.MINT_GREEN)
 
         self._snake.grow(tail)
