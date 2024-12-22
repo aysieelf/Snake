@@ -98,13 +98,15 @@ class FoodSystem:
                     continue
 
             else:
-                if (
-                    self._bonus_food_active and new_pos_tuple == self._bonus_food_pos
-                ) or new_pos_tuple in self._snake.positions:
+                if new_pos_tuple in self._snake.positions or (
+                        self._bonus_food_active and new_pos_tuple == self._bonus_food_pos
+                ):
                     attempts += 1
                     continue
 
             return new_pos
+
+        return [1, 1]
 
     def deactivate_bonus_food(self):
         self._bonus_food_active = False
