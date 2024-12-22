@@ -67,6 +67,10 @@ class EventHandler:
 
         # Pause the game
         elif event.key == pygame.K_SPACE:
-            self.game_state.pause_game() if not self.game_state.paused else self.game_state.continue_game()
+            (
+                self.game_state.pause_game()
+                if not self.game_state.paused
+                else self.game_state.continue_game()
+            )
 
         return True
