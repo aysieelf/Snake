@@ -71,12 +71,16 @@ GAME_OVER_TEXT_POS = 100
 # INSTRUCTIONS -----------------------------------------------------------------
 INSTRUCTIONS_FONT_SIZE = 14
 INSTRUCTIONS_FONT = "arial"
-INSTRUCTIONS_TEXT_0 = "Use the arrow keys or WASD to move the snake" # only in the start screen
-INSTRUCTIONS_TEXT_1 = "Press SPACE to start or pause/resume the game" # only in the start screen
-INSTRUCTIONS_TEXT_2 = "Press Q to quit the game" # only in the game over screen
-INSTRUCTIONS_TEXT_3 = "Press R to restart" # only in the game over screen
-INSTRUCTIONS_TEXT_4 = "Press Q to quit to main menu" # only in the game over screen
-INSTRUCTIONS_TEXT_5 = "Press Q again to quit the game" # only in the start screen
+INSTRUCTIONS_TEXT_0 = (
+    "Use the arrow keys or WASD to move the snake"  # only in the start screen
+)
+INSTRUCTIONS_TEXT_1 = (
+    "Press SPACE to start or pause/resume the game"  # only in the start screen
+)
+INSTRUCTIONS_TEXT_2 = "Press Q to quit the game"  # only in the game over screen
+INSTRUCTIONS_TEXT_3 = "Press R to restart"  # only in the game over screen
+INSTRUCTIONS_TEXT_4 = "Press Q to quit to main menu"  # only in the game over screen
+INSTRUCTIONS_TEXT_5 = "Press Q again to quit the game"  # only in the start screen
 INSTRUCTIONS_TEXT_COLOR = TEXT_COLOR
 INSTRUCTIONS = [
     INSTRUCTIONS_TEXT_0,

@@ -1,6 +1,6 @@
 from src import constants as c
 from src.game_state import GameState
-from src.graphics import draw_rectangle, draw_start_screen, draw_instructions
+from src.graphics import draw_instructions, draw_rectangle, draw_start_screen
 
 import pygame
 
@@ -136,13 +136,13 @@ class Renderer:
 
     def _draw_game_over_text(self):
         game_over_font = pygame.font.SysFont(c.GAME_OVER_FONT, c.GAME_OVER_FONT_SIZE)
-        game_over_surface = game_over_font.render(c.GAME_OVER_TEXT, True, c.GAME_OVER_TEXT_COLOR)
-        game_over_rect = game_over_surface.get_rect(center=(c.WINDOW_SIZE // 2, c.GAME_OVER_TEXT_POS))
+        game_over_surface = game_over_font.render(
+            c.GAME_OVER_TEXT, True, c.GAME_OVER_TEXT_COLOR
+        )
+        game_over_rect = game_over_surface.get_rect(
+            center=(c.WINDOW_SIZE // 2, c.GAME_OVER_TEXT_POS)
+        )
         self.screen.blit(game_over_surface, game_over_rect)
-
-
-
-
 
 
 #     font = pygame.font.Font(None, c.FONT_SIZE)

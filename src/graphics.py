@@ -74,6 +74,7 @@ def _draw_start_button(screen: pygame.Surface | None) -> pygame.Rect:
 
     return button_rect
 
+
 def draw_instructions(screen: pygame.Surface, first=0, last=len(c.INSTRUCTIONS)):
     """
     Draw the instructions on the screen.
@@ -90,5 +91,3 @@ def draw_instructions(screen: pygame.Surface, first=0, last=len(c.INSTRUCTIONS))
         )
         curr_y_pos += 20
         screen.blit(instruction_surface, instruction_rect)
-
-
