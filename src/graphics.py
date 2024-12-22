@@ -17,6 +17,7 @@ def draw_start_screen(screen: pygame.Surface):
     screen.fill(c.BACKGROUND)
 
     _draw_title(screen)
+    draw_instructions(screen, last=4)
     _draw_start_button(screen)
 
 
@@ -73,60 +74,21 @@ def _draw_start_button(screen: pygame.Surface | None) -> pygame.Rect:
 
     return button_rect
 
+def draw_instructions(screen: pygame.Surface, first=0, last=len(c.INSTRUCTIONS)):
+    """
+    Draw the instructions on the screen.
 
-#
-# def draw_game_over(screen: pygame.Surface, game_state: GameState) -> None:
-#     """
-#     Draw the game over screen on the screen.
-#
-#     Args:
-#         screen (pygame.Surface): The screen to draw on
-#         game_state (GameState): The current game state
-#     """
-#     overlay = pygame.Surface((c.WINDOW_SIZE, c.WINDOW_SIZE))
-#     overlay.set_alpha(200)
-#     overlay.fill(c.BLACK)
-#     screen.blit(overlay, (0, 0))
-#
-#     font = pygame.font.Font(None, c.FONT_SIZE)
-#
-#     if game_state.winner:
-#         text = f"Player {game_state.winner} wins!"
-#     else:
-#         text = "It's a draw!"
-#
-#     text_surface = font.render(text, True, c.TEXT_COLOR)
-#     text_rect = text_surface.get_rect(
-#         center=(c.WINDOW_SIZE // 2, c.WINDOW_SIZE // 2 - 30)
-#     )
-#     screen.blit(text_surface, text_rect)
-#
-#     small_font = pygame.font.Font(None, c.FONT_SIZE // 2)
-#     instruction_text = 'Press "R" to try again or "Q" to quit'
-#     instruction_surface = small_font.render(instruction_text, True, c.TEXT_COLOR)
-#     instruction_rect = instruction_surface.get_rect(
-#         center=(c.WINDOW_SIZE // 2, c.WINDOW_SIZE // 2 + 20)
-#     )
-#     screen.blit(instruction_surface, instruction_rect)
-#
-#
-# def draw_score(screen: pygame.Surface, game_state: GameState) -> None:
-#     """
-#     Draw the score on the screen.
-#
-#     Args:
-#         screen (pygame.Surface): The screen to draw on
-#         game_state (GameState): The current game state
-#     """
-#     font = pygame.font.Font(None, c.SCORE_FONT_SIZE)
-#
-#     score_text = (
-#         f"X: {game_state.scores['X']}      "
-#         f"Draws: {game_state.scores['Draws']}      "
-#         f"O: {game_state.scores['O']}"
-#     )
-#
-#     score_surface = font.render(score_text, True, c.SCORE_COLOR)
-#     score_rect = score_surface.get_rect(midtop=(c.WINDOW_SIZE // 2, c.SCORE_PADDING))
-#
-#     screen.blit(score_surface, score_rect)
+    Args:
+        screen (pygame.Surface): The screen to draw on
+    """
+    curr_y_pos = c.INSTRUCTIONS_POS
+    for instruction in c.INSTRUCTIONS[first:last]:
+        font = pygame.font.SysFont(c.INSTRUCTIONS_FONT, c.INSTRUCTIONS_FONT_SIZE)
+        instruction_surface = font.render(instruction, True, c.TEXT_COLOR)
+        instruction_rect = instruction_surface.get_rect(
+            center=(c.WINDOW_SIZE // 2, curr_y_pos)
+        )
+        curr_y_pos += 20
+        screen.blit(instruction_surface, instruction_rect)
+
+

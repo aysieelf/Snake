@@ -60,3 +60,32 @@ START_BUTTON_TITLE_HOVER_COLOR = TEXT_COLOR
 START_BUTTON_COLOR = SOFT_LAVENDER
 START_BUTTON_HOVER_COLOR = PEACH
 START_BUTTON_FONT_SIZE = 35
+
+# GAME OVER SCREEN -------------------------------------------------------------
+GAME_OVER_FONT_SIZE = 48
+GAME_OVER_FONT = "impact"
+GAME_OVER_TEXT = "GAME OVER"
+GAME_OVER_TEXT_COLOR = TEXT_COLOR
+GAME_OVER_TEXT_POS = 100
+
+# INSTRUCTIONS -----------------------------------------------------------------
+INSTRUCTIONS_FONT_SIZE = 14
+INSTRUCTIONS_FONT = "arial"
+INSTRUCTIONS_TEXT_0 = "Use the arrow keys or WASD to move the snake" # only in the start screen
+INSTRUCTIONS_TEXT_1 = "Press SPACE to start or pause/resume the game" # only in the start screen
+INSTRUCTIONS_TEXT_2 = "Press Q to quit the game" # only in the game over screen
+INSTRUCTIONS_TEXT_3 = "Press R to restart" # only in the game over screen
+INSTRUCTIONS_TEXT_4 = "Press Q to quit to main menu" # only in the game over screen
+INSTRUCTIONS_TEXT_5 = "Press Q again to quit the game" # only in the start screen
+INSTRUCTIONS_TEXT_COLOR = TEXT_COLOR
+INSTRUCTIONS = [
+    INSTRUCTIONS_TEXT_0,
+    INSTRUCTIONS_TEXT_1,
+    INSTRUCTIONS_TEXT_2,
+    INSTRUCTIONS_TEXT_3,
+    INSTRUCTIONS_TEXT_4,
+    INSTRUCTIONS_TEXT_5,
+]
+INSTRUCTIONS_POS = 170
+
+# SCOREBOARD -------------------------------------------------------------------
