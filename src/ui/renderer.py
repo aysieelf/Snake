@@ -31,6 +31,8 @@ class Renderer:
             self._draw_snake(game_state.snake)
             self._draw_food(game_state.food_system.food_pos)
             self._draw_score(game_state.score)
+            game_state.particle_system.update()
+            game_state.particle_system.draw()
 
             if game_state.food_system.bonus_food_active:
                 self._draw_food(game_state.food_system.bonus_food_pos, bonus_food=True)

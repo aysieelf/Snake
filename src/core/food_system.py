@@ -3,8 +3,10 @@ from src.utils.helpers import get_random_position
 
 
 class FoodSystem:
-    def __init__(self, snake):
+    def __init__(self, snake, particle_system):
         self._snake = snake
+        self._particle_system = particle_system
+
         self._food_pos = [0, 0]
         self._new_food = True
 
@@ -59,6 +61,10 @@ class FoodSystem:
             return False
 
     def _collect_bonus_food(self, tail):
+        bonus_pixel_pos = (self._bonus_food_pos[0] * c.CELL_SIZE,
+                           self._bonus_food_pos[1] * c.CELL_SIZE)
+        self._particle_system.spawn_particles(*bonus_pixel_pos, c.MINT_GREEN)
+
         self._snake.grow(tail)
         self.deactivate_bonus_food()
 

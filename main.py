@@ -16,6 +16,7 @@ def main() -> None:
     clock = pygame.time.Clock()
 
     game_state = GameState()
+    game_state.particle_system.screen = screen
 
     game_loop(screen, game_state, clock)
 
