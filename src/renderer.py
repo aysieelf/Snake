@@ -148,5 +148,7 @@ class Renderer:
         font = pygame.font.SysFont(c.SCORE_FONT, c.SCORE_FONT_SIZE)
         score_text = f"{c.SCORE_TEXT} {score}"
         score_surface = font.render(score_text, True, c.SCORE_COLOR)
-        score_rect = score_surface.get_rect(midtop=(c.WINDOW_SIZE // 2, c.SCORE_PADDING))
+        score_rect = score_surface.get_rect(
+            midtop=(c.WINDOW_SIZE // 2, c.SCORE_PADDING)
+        )
         self.screen.blit(score_surface, score_rect)
