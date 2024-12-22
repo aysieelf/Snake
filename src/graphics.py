@@ -1,10 +1,11 @@
-import pygame
-
 from src import constants as c
+
+import pygame
 
 
 def draw_rectangle(screen, color, x, y, width, height):
     pygame.draw.rect(screen, color, (x, y, width, height))
+
 
 def draw_start_screen(screen: pygame.Surface):
     """
@@ -71,6 +72,7 @@ def _draw_start_button(screen: pygame.Surface | None) -> pygame.Rect:
     screen.blit(button_surface, text_rect)
 
     return button_rect
+
 
 #
 # def draw_game_over(screen: pygame.Surface, game_state: GameState) -> None:
