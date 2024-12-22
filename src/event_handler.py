@@ -1,9 +1,8 @@
 from src import constants as c
 from src.game_state import GameState
+from src.graphics import get_start_button_rect
 
 import pygame
-
-from src.graphics import get_start_button_rect
 
 
 class EventHandler:
