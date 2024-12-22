@@ -67,10 +67,15 @@ class EventHandler:
 
         # Change the direction of the snake
         elif event.key in [
-            pygame.K_w, pygame.K_UP,
-            pygame.K_a, pygame.K_LEFT,
-            pygame.K_s, pygame.K_DOWN,
-            pygame.K_d, pygame.K_RIGHT]:
+            pygame.K_w,
+            pygame.K_UP,
+            pygame.K_a,
+            pygame.K_LEFT,
+            pygame.K_s,
+            pygame.K_DOWN,
+            pygame.K_d,
+            pygame.K_RIGHT,
+        ]:
             self._handle_direction_change(event.key)
 
         # Pause or start the game
