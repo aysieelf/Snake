@@ -1,6 +1,6 @@
 from src.event_handler import EventHandler
-from src.game_state import GameState
-from src.renderer import Renderer
+from src.core.game_state import GameState
+from src.ui.renderer import Renderer
 
 import pygame
 

@@ -1,6 +1,6 @@
-from src import constants as c
-from src.game_state import GameState
-from src.graphics import draw_instructions, draw_rectangle, draw_start_screen
+from src.utils import constants as c
+from src.core.game_state import GameState
+from src.ui.ui_components import draw_instructions, draw_rectangle, draw_start_screen
 
 import pygame
 

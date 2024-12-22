@@ -1,4 +1,4 @@
-from src import constants as c
+from src.utils import constants as c
 
 import pygame
 

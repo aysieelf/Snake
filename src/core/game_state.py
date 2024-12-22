@@ -1,6 +1,6 @@
-from src import constants as c
-from src.snake import Snake
-from src.utils import get_random_position
+from src.utils import constants as c
+from src.core.snake import Snake
+from src.utils.helpers import get_random_position
 
 
 class GameState:
