@@ -147,7 +147,7 @@ class GameState:
 
         self._move_delay = max(min_delay, new_delay)
 
-    def create_food(self):
+    def spawn_food(self):
         if self._new_food:
             self._new_food = False
             self._food_pos = self._validate_food_position()

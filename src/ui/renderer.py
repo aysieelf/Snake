@@ -28,19 +28,19 @@ class Renderer:
         if game_state.start_screen:
             draw_start_screen(self.screen)
         else:
-            self._render_snake(game_state.snake)
-            self._render_food(game_state.food_pos)
+            self._draw_snake(game_state.snake)
+            self._draw_food(game_state.food_pos)
             self._draw_score(game_state.score)
 
             if game_state.bonus_food_active:
-                self._render_food(game_state.bonus_food_pos, bonus_food=True)
+                self._draw_food(game_state.bonus_food_pos, bonus_food=True)
 
             if game_state.game_over:
                 self._draw_game_over()
 
         pygame.display.flip()
 
-    def _render_snake(self, snake):
+    def _draw_snake(self, snake):
         """Render the snake on the screen"""
         snake_head, *snake_body = snake.get_snake_body_positions()
         for segment in snake_body:
@@ -109,7 +109,7 @@ class Renderer:
                 (head_pos[0] + c.EYE_OFFSET_FAR, head_pos[1] + c.EYE_DEPTH),
             )
 
-    def _render_food(self, food_pos, bonus_food=False):
+    def _draw_food(self, food_pos, bonus_food=False):
         """Render the food on the screen"""
         color = c.MINT_GREEN if bonus_food else c.PASTEL_PINK
 
