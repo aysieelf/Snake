@@ -70,7 +70,9 @@ class GameState:
 
     def _check_wall_collision(self):
         head_x, head_y = self.snake.get_head_position()
-        return head_x < 0 or head_x >= c.GRID_SIZE or head_y < 0 or head_y >= c.GRID_SIZE
+        return (
+            head_x < 0 or head_x >= c.GRID_SIZE or head_y < 0 or head_y >= c.GRID_SIZE
+        )
 
     def _update_bonus_food(self, tail):
         self._bonus_food_spawn_timer += 1 if self._bonus_food_pos is None else 0
