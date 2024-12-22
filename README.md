@@ -59,14 +59,15 @@ python main.py
 - Space - Start game / Pause/Resume game
 
 ## ⏳ Current Progress
-[▓▓▓▓▓░░░░░] 50%
+[▓▓▓▓▓▓▓░░░] 50%
 
 - [x] Project setup
 - [x] Snake implementation
 - [x] Food & Growth mechanics
 - [x] Collision & Game Over
 - [x] Pause & Restart
-- [ ] UI & Polish
+- [x] UI & Polish
+- [ ] Testing & Documentation
 
 ## 🎯 Project Goals
 - Create a classic Snake game with smooth controls
@@ -95,6 +96,7 @@ python main.py
 - Pause/Resume game functionality
 - Food spawning system
 - Clean code organization in game development
+- How to create Particles in PyGame
 
 ## 💡 First Time Achievements
 - First time implementing a grid-based movement system
@@ -102,6 +104,7 @@ python main.py
 - First time implementing a pause/resume game functionality
 - First time implementing a food spawning system
 - First time implementing a growing snake mechanic
+- First time implementing particles in PyGame for effects
 
 ## 📸 Screenshots
 ...
