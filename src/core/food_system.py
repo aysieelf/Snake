@@ -99,7 +99,7 @@ class FoodSystem:
 
             else:
                 if new_pos_tuple in self._snake.positions or (
-                        self._bonus_food_active and new_pos_tuple == self._bonus_food_pos
+                    self._bonus_food_active and new_pos_tuple == self._bonus_food_pos
                 ):
                     attempts += 1
                     continue
