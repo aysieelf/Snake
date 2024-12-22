@@ -26,6 +26,8 @@ class GameState:
         self._bonus_food_duration_timer = 0
         self._bonus_food_active = False
 
+        self._game_over = False
+
     @property
     def food_pos(self):
         return tuple(self._food_pos)
@@ -50,14 +52,25 @@ class GameState:
     def bonus_food_spawn_timer(self):
         return self._bonus_food_spawn_timer
 
+    @property
+    def game_over(self):
+        return self._game_over
+
     def update(self):
         """Update game state including snake movement based on current speed"""
         self._frame_count += 1
         self._update_speed()
 
-        tail = self._update_movement()
-        self._handle_food_collision(tail)
-        self._update_bonus_food(tail)
+        if not self._game_over:
+            tail = self._update_movement()
+            if self._check_wall_collision():
+                self._game_over = True
+            self._handle_food_collision(tail)
+            self._update_bonus_food(tail)
+
+    def _check_wall_collision(self):
+        head_x, head_y = self.snake.get_head_position()
+        return head_x < 0 or head_x >= c.GRID_SIZE or head_y < 0 or head_y >= c.GRID_SIZE
 
     def _update_bonus_food(self, tail):
         self._bonus_food_spawn_timer += 1 if self._bonus_food_pos is None else 0
@@ -159,3 +172,4 @@ class GameState:
         self._bonus_food_spawn_timer = 0
         self._bonus_food_duration_timer = 0
         self._bonus_food_active = False
+        self._game_over = False
