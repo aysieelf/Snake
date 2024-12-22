@@ -55,9 +55,8 @@ python main.py
 ### Controls
 - WASD/Arrow keys - Move snake
 - R - Restart game
-- Q - Quit game
-- P - Pause game
-- Space - Resume game
+- Q - Quit to main menu / Exit game
+- Space - Start game / Pause/Resume game
 
 ## ⏳ Current Progress
 [▓▓▓▓▓░░░░░] 50%
