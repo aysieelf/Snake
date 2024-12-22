@@ -63,32 +63,47 @@ class EventHandler:
 
         # Exit the game
         elif event.key == pygame.K_q:
-            if not self.game_state.start_screen:
-                self.game_state.reset()
-                self.game_state.exit_to_start_screen()
-            else:
-                return False
+            return self._handle_exit_game()
 
         # Change the direction of the snake
-        elif event.key == pygame.K_w or event.key == pygame.K_UP:
-            self.game_state.snake.change_direction(c.UP)
-        elif event.key == pygame.K_a or event.key == pygame.K_LEFT:
-            self.game_state.snake.change_direction(c.LEFT)
-        elif event.key == pygame.K_s or event.key == pygame.K_DOWN:
-            self.game_state.snake.change_direction(c.DOWN)
-        elif event.key == pygame.K_d or event.key == pygame.K_RIGHT:
-            self.game_state.snake.change_direction(c.RIGHT)
+        elif event.key in [
+            pygame.K_w, pygame.K_UP,
+            pygame.K_a, pygame.K_LEFT,
+            pygame.K_s, pygame.K_DOWN,
+            pygame.K_d, pygame.K_RIGHT]:
+            self._handle_direction_change(event.key)
 
         # Pause or start the game
         elif event.key == pygame.K_SPACE:
-            if self.game_state.start_screen:
-                self.game_state.start_game()
-            elif not self.game_state.paused:
-                self.game_state.pause_game()
-            else:
-                self.game_state.continue_game()
+            self._handle_space_key()
 
         return True
+
+    def _handle_exit_game(self) -> bool:
+        if not self.game_state.start_screen:
+            self.game_state.reset()
+            self.game_state.exit_to_start_screen()
+            return True
+        else:
+            return False
+
+    def _handle_direction_change(self, key: int) -> None:
+        if key == pygame.K_w or key == pygame.K_UP:
+            self.game_state.snake.change_direction(c.UP)
+        elif key == pygame.K_a or key == pygame.K_LEFT:
+            self.game_state.snake.change_direction(c.LEFT)
+        elif key == pygame.K_s or key == pygame.K_DOWN:
+            self.game_state.snake.change_direction(c.DOWN)
+        elif key == pygame.K_d or key == pygame.K_RIGHT:
+            self.game_state.snake.change_direction(c.RIGHT)
+
+    def _handle_space_key(self) -> None:
+        if self.game_state.start_screen:
+            self.game_state.start_game()
+        elif not self.game_state.paused:
+            self.game_state.pause_game()
+        else:
+            self.game_state.continue_game()
 
     def _handle_start_screen_click(self) -> None:
         """
