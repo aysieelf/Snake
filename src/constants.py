@@ -67,6 +67,7 @@ GAME_OVER_FONT = "impact"
 GAME_OVER_TEXT = "GAME OVER"
 GAME_OVER_TEXT_COLOR = TEXT_COLOR
 GAME_OVER_TEXT_POS = 100
+OVERLAY_ALPHA = 100
 
 # INSTRUCTIONS -----------------------------------------------------------------
 INSTRUCTIONS_FONT_SIZE = 14
@@ -93,3 +94,7 @@ INSTRUCTIONS = [
 INSTRUCTIONS_POS = 170
 
 # SCOREBOARD -------------------------------------------------------------------
+SCORE_FONT_SIZE = 20
+SCORE_FONT = "arial bold"
+SCORE_TEXT = "SCORE: "
+SCORE_PADDING = 5

@@ -135,13 +135,28 @@ class GameState:
 
     def _update_speed(self):
         """Adjust snake speed based on score"""
-        base_delay = 20
-        current_delay = self._move_delay
-        delay_step = current_delay // 10
-        min_delay = 5
-
-        new_delay = base_delay - (self.score // 5) * delay_step
-        self._move_delay = max(min_delay, new_delay)
+        if 0 <= self.score < 5:
+            self._move_delay = 20
+        elif 5 <= self.score < 10:
+            self._move_delay = 18
+        elif 10 <= self.score < 15:
+            self._move_delay = 16
+        elif 15 <= self.score < 20:
+            self._move_delay = 14
+        elif 20 <= self.score < 25:
+            self._move_delay = 12
+        elif 25 <= self.score < 30:
+            self._move_delay = 11
+        elif 30 <= self.score < 35:
+            self._move_delay = 10
+        elif 35 <= self.score < 40:
+            self._move_delay = 9
+        elif 40 <= self.score < 45:
+            self._move_delay = 8
+        elif 45 <= self.score < 50:
+            self._move_delay = 7
+        elif 50 <= self.score:
+            self._move_delay = 6
 
     def create_food(self):
         if self._new_food:
@@ -193,7 +208,7 @@ class GameState:
         self.snake = Snake()
         self.score = 0
         self._frame_count = 0
-        self._move_delay = 30
+        self._move_delay = 20
         self._food_pos = [0, 0]
         self._new_food = True
         self._bonus_food_pos = None
