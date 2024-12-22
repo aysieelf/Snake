@@ -63,7 +63,7 @@ class GameState:
 
         if not self._game_over:
             tail = self._update_movement()
-            if self._check_wall_collision():
+            if self._check_wall_collision() or self._check_self_collision():
                 self._game_over = True
             self._handle_food_collision(tail)
             self._update_bonus_food(tail)
@@ -73,6 +73,10 @@ class GameState:
         return (
             head_x < 0 or head_x >= c.GRID_SIZE or head_y < 0 or head_y >= c.GRID_SIZE
         )
+
+    def _check_self_collision(self):
+        head_pos = self.snake.get_head_position()
+        return head_pos in self.snake.positions[1:]
 
     def _update_bonus_food(self, tail):
         self._bonus_food_spawn_timer += 1 if self._bonus_food_pos is None else 0
