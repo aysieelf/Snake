@@ -27,6 +27,7 @@ class GameState:
         self._bonus_food_active = False
 
         self._game_over = False
+        self._paused = False
 
     @property
     def food_pos(self):
@@ -56,12 +57,16 @@ class GameState:
     def game_over(self):
         return self._game_over
 
+    @property
+    def paused(self):
+        return self._paused
+
     def update(self):
         """Update game state including snake movement based on current speed"""
         self._frame_count += 1
         self._update_speed()
 
-        if not self._game_over:
+        if not self._game_over and not self._paused:
             tail = self._update_movement()
             if self._check_wall_collision() or self._check_self_collision():
                 self._game_over = True
@@ -162,6 +167,12 @@ class GameState:
                     continue
 
             return new_pos
+
+    def pause_game(self):
+        self._paused = True
+
+    def continue_game(self):
+        self._paused = False
 
     def reset(self) -> None:
         """

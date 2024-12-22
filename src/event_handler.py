@@ -47,10 +47,15 @@ class EventHandler:
         Returns:
             bool: True if the game should continue, False if the game should end
         """
+        # Restart the game
         if event.key == pygame.K_r:
             self.game_state.reset()
+
+        # Exit the game
         elif event.key == pygame.K_q:
             return False
+
+        # Change the direction of the snake
         elif event.key == pygame.K_w or event.key == pygame.K_UP:
             self.game_state.snake.change_direction(c.UP)
         elif event.key == pygame.K_a or event.key == pygame.K_LEFT:
@@ -59,4 +64,9 @@ class EventHandler:
             self.game_state.snake.change_direction(c.DOWN)
         elif event.key == pygame.K_d or event.key == pygame.K_RIGHT:
             self.game_state.snake.change_direction(c.RIGHT)
+
+        # Pause the game
+        elif event.key == pygame.K_SPACE:
+            self.game_state.pause_game() if not self.game_state.paused else self.game_state.continue_game()
+
         return True
