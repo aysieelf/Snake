@@ -1,5 +1,5 @@
-from src.utils.helpers import get_random_position
 from src.utils import constants as c
+from src.utils.helpers import get_random_position
 
 
 class FoodSystem:

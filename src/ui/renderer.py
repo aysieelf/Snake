@@ -1,5 +1,5 @@
 from src.core.game_state import GameState
-from src.ui.ui_components import draw_instructions, create_rectangle, draw_start_screen
+from src.ui.ui_components import create_rectangle, draw_instructions, draw_start_screen
 from src.utils import constants as c
 
 import pygame

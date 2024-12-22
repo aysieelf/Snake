@@ -1,6 +1,6 @@
-from src.utils import constants as c
 from src.core.game_loop import game_loop
 from src.core.game_state import GameState
+from src.utils import constants as c
 
 import pygame
 
