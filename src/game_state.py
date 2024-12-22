@@ -150,7 +150,7 @@ class GameState:
 
     def _validate_food_position(self, bonus_food=False):
         attempts = 0
-        max_attempts = 50
+        max_attempts = 100
 
         while attempts < max_attempts:
             new_pos = get_random_position()

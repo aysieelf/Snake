@@ -52,7 +52,7 @@ class EventHandler:
                 - A key or LEFT arrow key: Move the snake left
                 - S key or DOWN arrow key: Move the snake down
                 - D key or RIGHT arrow key: Move the snake right
-                - SPACE key: Pause or continue the game
+                - SPACE key: Pause or start the game
 
 
         Returns:
@@ -80,13 +80,14 @@ class EventHandler:
         elif event.key == pygame.K_d or event.key == pygame.K_RIGHT:
             self.game_state.snake.change_direction(c.RIGHT)
 
-        # Pause the game
+        # Pause or start the game
         elif event.key == pygame.K_SPACE:
-            (
+            if self.game_state.start_screen:
+                self.game_state.start_game()
+            elif not self.game_state.paused:
                 self.game_state.pause_game()
-                if not self.game_state.paused
-                else self.game_state.continue_game()
-            )
+            else:
+                self.game_state.continue_game()
 
         return True
 
