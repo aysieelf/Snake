@@ -1,5 +1,5 @@
 from src.core.game_state import GameState
-from src.ui.ui_components import draw_instructions, draw_rectangle, draw_start_screen
+from src.ui.ui_components import draw_instructions, create_rectangle, draw_start_screen
 from src.utils import constants as c
 
 import pygame
@@ -29,11 +29,11 @@ class Renderer:
             draw_start_screen(self.screen)
         else:
             self._draw_snake(game_state.snake)
-            self._draw_food(game_state.food_pos)
+            self._draw_food(game_state.food_system.food_pos)
             self._draw_score(game_state.score)
 
-            if game_state.bonus_food_active:
-                self._draw_food(game_state.bonus_food_pos, bonus_food=True)
+            if game_state.food_system.bonus_food_active:
+                self._draw_food(game_state.food_system.bonus_food_pos, bonus_food=True)
 
             if game_state.game_over:
                 self._draw_game_over()
@@ -44,7 +44,7 @@ class Renderer:
         """Render the snake on the screen"""
         snake_head, *snake_body = snake.get_snake_body_positions()
         for segment in snake_body:
-            draw_rectangle(
+            create_rectangle(
                 self.screen,
                 c.PASTEL_GREEN,
                 segment[0],
@@ -53,7 +53,7 @@ class Renderer:
                 c.CELL_SIZE,
             )
 
-        draw_rectangle(
+        create_rectangle(
             self.screen,
             c.DARKER_PASTEL_GREEN,
             snake_head[0],
@@ -113,7 +113,7 @@ class Renderer:
         """Render the food on the screen"""
         color = c.MINT_GREEN if bonus_food else c.PASTEL_PINK
 
-        draw_rectangle(
+        create_rectangle(
             self.screen,
             color,
             food_pos[0] * c.CELL_SIZE,

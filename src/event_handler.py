@@ -1,6 +1,6 @@
-from src import constants as c
-from src.game_state import GameState
-from src.graphics import get_start_button_rect
+from src.utils import constants as c
+from src.core.game_state import GameState
+from src.ui.ui_components import get_start_button_rect
 
 import pygame
 

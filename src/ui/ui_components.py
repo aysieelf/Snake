@@ -3,7 +3,7 @@ from src.utils import constants as c
 import pygame
 
 
-def draw_rectangle(screen, color, x, y, width, height):
+def create_rectangle(screen, color, x, y, width, height):
     pygame.draw.rect(screen, color, (x, y, width, height))
 
 
@@ -16,12 +16,12 @@ def draw_start_screen(screen: pygame.Surface):
     """
     screen.fill(c.BACKGROUND)
 
-    _draw_title(screen)
+    create_title(screen)
     draw_instructions(screen, last=4)
     _draw_start_button(screen)
 
 
-def _draw_title(screen: pygame.Surface):
+def create_title(screen: pygame.Surface):
     title_font = pygame.font.SysFont(c.TITLE_FONT, c.TITLE_FONT_SIZE)
     title_surface = title_font.render(c.TITLE_TEXT, True, c.TITLE_COLOR)
     title_rect = title_surface.get_rect(centerx=c.WINDOW_SIZE // 2, y=c.TITLE_Y_POS)
