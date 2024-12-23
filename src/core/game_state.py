@@ -23,7 +23,7 @@ class GameState:
         self.food_system = FoodSystem(self.snake, self.particle_system)
 
         self._game_over = False
-        self._paused = False
+        self._paused = True
         self._start_screen = True
 
     @property
@@ -98,6 +98,7 @@ class GameState:
         self._move_delay = max(min_delay, new_delay)
 
     def start_game(self):
+        self.reset()
         self._start_screen = False
 
     def exit_to_start_screen(self):
@@ -120,4 +121,6 @@ class GameState:
         self._move_delay = 20
         self._game_over = False
         self._paused = False
+
+        self.food_system = FoodSystem(self.snake, self.particle_system)
         self.food_system.reset()

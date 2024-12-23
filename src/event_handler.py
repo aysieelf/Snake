@@ -86,7 +86,7 @@ class EventHandler:
 
     def _handle_exit_game(self) -> bool:
         if not self.game_state.start_screen:
-            self.game_state.reset()
+            self.game_state.pause_game()
             self.game_state.exit_to_start_screen()
             return True
         else:
@@ -103,12 +103,12 @@ class EventHandler:
             self.game_state.snake.change_direction(c.RIGHT)
 
     def _handle_space_key(self) -> None:
+        if not self.game_state.paused:
+            self.game_state.pause_game()
+            return
         if self.game_state.start_screen:
             self.game_state.start_game()
-        elif not self.game_state.paused:
-            self.game_state.pause_game()
-        else:
-            self.game_state.continue_game()
+        self.game_state.continue_game()
 
     def _handle_start_screen_click(self) -> None:
         """
