@@ -25,7 +25,7 @@ class FoodSystem:
 
     @property
     def bonus_food_pos(self):
-        return tuple(self._bonus_food_pos)
+        return tuple(self._bonus_food_pos) if self._bonus_food_pos else None
 
     @property
     def bonus_food_active(self):
