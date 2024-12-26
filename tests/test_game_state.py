@@ -69,9 +69,10 @@ class GameStateShould(unittest.TestCase):
     def test_update_setsGameOverToTrue_whenWallCollision(self):
         self.game_state._game_over = False
         self.game_state._paused = False
-        with (patch.object(self.game_state, "_update_movement"),
-              patch.object(self.game_state, "_check_wall_collision", return_value=True),
-              ):
+        with (
+            patch.object(self.game_state, "_update_movement"),
+            patch.object(self.game_state, "_check_wall_collision", return_value=True),
+        ):
 
             self.game_state.update()
             self.assertTrue(self.game_state.game_over)
@@ -79,10 +80,11 @@ class GameStateShould(unittest.TestCase):
     def test_update_setsGameOverToTrue_whenSelfCollision(self):
         self.game_state._game_over = False
         self.game_state._paused = False
-        with (patch.object(self.game_state, "_update_movement"),
-              patch.object(self.game_state, "_check_wall_collision", return_value=False),
-              patch.object(self.game_state, "_check_self_collision", return_value=True),
-              ):
+        with (
+            patch.object(self.game_state, "_update_movement"),
+            patch.object(self.game_state, "_check_wall_collision", return_value=False),
+            patch.object(self.game_state, "_check_self_collision", return_value=True),
+        ):
 
             self.game_state.update()
             self.assertTrue(self.game_state.game_over)
@@ -91,26 +93,38 @@ class GameStateShould(unittest.TestCase):
         self.game_state._game_over = False
         self.game_state._paused = False
         self.game_state.food_system._food_pos = (0, 0)
-        with (patch.object(self.game_state, "_update_movement"),
-              patch.object(self.game_state, "_check_wall_collision", return_value=False),
-              patch.object(self.game_state, "_check_self_collision", return_value=False),
-              patch.object(self.game_state.snake, "get_head_position", return_value=(0, 0)),
-              patch.object(self.game_state, "_handle_food_collision") as mock_handle_food_collision,
-              ):
+        with (
+            patch.object(self.game_state, "_update_movement"),
+            patch.object(self.game_state, "_check_wall_collision", return_value=False),
+            patch.object(self.game_state, "_check_self_collision", return_value=False),
+            patch.object(
+                self.game_state.snake, "get_head_position", return_value=(0, 0)
+            ),
+            patch.object(
+                self.game_state, "_handle_food_collision"
+            ) as mock_handle_food_collision,
+        ):
 
             self.game_state.update()
             mock_handle_food_collision.assert_called_once()
 
-    def test_update_doesNotCallHandleFoodCollision_whenHeadPositionNotEqualsFoodPos(self):
+    def test_update_doesNotCallHandleFoodCollision_whenHeadPositionNotEqualsFoodPos(
+        self,
+    ):
         self.game_state._game_over = False
         self.game_state._paused = False
         self.game_state.food_system._food_pos = (0, 0)
-        with (patch.object(self.game_state, "_update_movement"),
-              patch.object(self.game_state, "_check_wall_collision", return_value=False),
-              patch.object(self.game_state, "_check_self_collision", return_value=False),
-              patch.object(self.game_state.snake, "get_head_position", return_value=(1, 1)),
-              patch.object(self.game_state, "_handle_food_collision") as mock_handle_food_collision,
-              ):
+        with (
+            patch.object(self.game_state, "_update_movement"),
+            patch.object(self.game_state, "_check_wall_collision", return_value=False),
+            patch.object(self.game_state, "_check_self_collision", return_value=False),
+            patch.object(
+                self.game_state.snake, "get_head_position", return_value=(1, 1)
+            ),
+            patch.object(
+                self.game_state, "_handle_food_collision"
+            ) as mock_handle_food_collision,
+        ):
 
             self.game_state.update()
             mock_handle_food_collision.assert_not_called()
@@ -119,69 +133,90 @@ class GameStateShould(unittest.TestCase):
         self.game_state._game_over = False
         self.game_state._paused = False
         self.game_state.food_system._food_pos = (0, 0)
-        with (patch.object(self.game_state, "_update_movement"),
-              patch.object(self.game_state, "_check_wall_collision", return_value=False),
-              patch.object(self.game_state, "_check_self_collision", return_value=False),
-              patch.object(self.game_state.snake, "get_head_position", return_value=(1, 1)),
-              patch.object(self.game_state.food_system, "update_bonus_food", return_value=True),
-              ):
+        with (
+            patch.object(self.game_state, "_update_movement"),
+            patch.object(self.game_state, "_check_wall_collision", return_value=False),
+            patch.object(self.game_state, "_check_self_collision", return_value=False),
+            patch.object(
+                self.game_state.snake, "get_head_position", return_value=(1, 1)
+            ),
+            patch.object(
+                self.game_state.food_system, "update_bonus_food", return_value=True
+            ),
+        ):
 
             self.game_state.update()
             self.assertEqual(3, self.game_state.score)
 
     def test_checkWallCollision_returnsTrue_whenHeadPositionLessThanZero(self):
-        with patch.object(self.game_state.snake, "get_head_position", return_value=(-1, 0)):
+        with patch.object(
+            self.game_state.snake, "get_head_position", return_value=(-1, 0)
+        ):
             self.assertTrue(self.game_state._check_wall_collision())
 
     def test_checkWallCollision_returnsTrue_whenHeadPositionGreaterThanGridSize(self):
-        with patch.object(self.game_state.snake, "get_head_position", return_value=(20, 0)):
+        with patch.object(
+            self.game_state.snake, "get_head_position", return_value=(20, 0)
+        ):
             self.assertTrue(self.game_state._check_wall_collision())
 
     def test_checkWallCollision_returnsFalse_whenHeadPositionWithinGridSize(self):
-        with patch.object(self.game_state.snake, "get_head_position", return_value=(10, 10)):
+        with patch.object(
+            self.game_state.snake, "get_head_position", return_value=(10, 10)
+        ):
             self.assertFalse(self.game_state._check_wall_collision())
 
     def test_checkSelfCollision_returnsTrue_whenHeadPositionInSnakePositions(self):
         self.game_state.snake._positions = ((10, 10), (11, 10), (10, 10))
-        with patch.object(self.game_state.snake, "get_head_position", return_value=(10, 10)):
+        with patch.object(
+            self.game_state.snake, "get_head_position", return_value=(10, 10)
+        ):
             self.assertTrue(self.game_state._check_self_collision())
 
     def test_checkSelfCollision_returnsFalse_whenHeadPositionNotInSnakePositions(self):
         self.game_state.snake._positions = ((10, 10), (11, 10))
-        with patch.object(self.game_state.snake, "get_head_position", return_value=(10, 11)):
+        with patch.object(
+            self.game_state.snake, "get_head_position", return_value=(10, 11)
+        ):
             self.assertFalse(self.game_state._check_self_collision())
 
     def test_handleFoodCollision_growsSnake(self):
         tail = (10, 10)
-        with (patch.object(self.game_state.snake, "grow") as mock_grow,
-              patch.object(self.game_state.particle_system, "spawn_particles"),
-              ):
+        with (
+            patch.object(self.game_state.snake, "grow") as mock_grow,
+            patch.object(self.game_state.particle_system, "spawn_particles"),
+        ):
             self.game_state._handle_food_collision(tail)
             mock_grow.assert_called_once_with(tail)
 
     def test_handleFoodCollision_incrementsScoreByOne(self):
         tail = (10, 10)
         self.game_state.score = 0
-        with (patch.object(self.game_state.snake, "grow"),
-              patch.object(self.game_state.particle_system, "spawn_particles"),
-              ):
+        with (
+            patch.object(self.game_state.snake, "grow"),
+            patch.object(self.game_state.particle_system, "spawn_particles"),
+        ):
             self.game_state._handle_food_collision(tail)
             self.assertEqual(1, self.game_state.score)
 
     def test_handleFoodCollision_setsNewFoodToTrue(self):
         tail = (10, 10)
         self.game_state.food_system._new_food = False
-        with (patch.object(self.game_state.snake, "grow"),
-              patch.object(self.game_state.particle_system, "spawn_particles"),
-              ):
+        with (
+            patch.object(self.game_state.snake, "grow"),
+            patch.object(self.game_state.particle_system, "spawn_particles"),
+        ):
             self.game_state._handle_food_collision(tail)
             self.assertTrue(self.game_state.food_system.new_food)
 
     def test_handleFoodCollision_callsParticleSystemSpawnParticles(self):
         tail = (10, 10)
-        with (patch.object(self.game_state.snake, "grow"),
-              patch.object(self.game_state.particle_system, "spawn_particles") as mock_spawn_particles,
-              ):
+        with (
+            patch.object(self.game_state.snake, "grow"),
+            patch.object(
+                self.game_state.particle_system, "spawn_particles"
+            ) as mock_spawn_particles,
+        ):
 
             self.game_state._handle_food_collision(tail)
             mock_spawn_particles.assert_called_once()
@@ -286,9 +321,7 @@ class GameStateShould(unittest.TestCase):
         self.assertIsNotNone(self.game_state.snake)
 
     def test_reset_createNewFoodSystemAndResetsIt(self):
-        with (patch('src.core.game_state.FoodSystem') as mock_food_system):
+        with patch("src.core.game_state.FoodSystem") as mock_food_system:
             self.game_state.reset()
             mock_food_system.assert_called_once()
             mock_food_system().reset.assert_called_once()
-
-

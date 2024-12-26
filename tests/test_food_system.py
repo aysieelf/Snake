@@ -35,7 +35,9 @@ class FoodSystemShould(unittest.TestCase):
     def test_updateBonusFood_returnsBonusFoodCollected_whenBonusFoodActive(self):
         self.food_system._bonus_food_active = True
 
-        with (patch.object(self.food_system, "_handle_bonus_food", return_value=True) as mock_handle_bonus_food):
+        with patch.object(
+            self.food_system, "_handle_bonus_food", return_value=True
+        ) as mock_handle_bonus_food:
 
             result = self.food_system.update_bonus_food(None)
             self.assertTrue(result)
@@ -56,7 +58,9 @@ class FoodSystemShould(unittest.TestCase):
     def test_updateBonusFood_spawnsBonusFood_whenBonusFSTEqualBonusFSI(self):
         self.food_system._bonus_food_spawn_timer = c.BONUS_FOOD_SPAWN_INTERVAL - 1
 
-        with patch.object(self.food_system, "_spawn_bonus_food") as mock_spawn_bonus_food:
+        with patch.object(
+            self.food_system, "_spawn_bonus_food"
+        ) as mock_spawn_bonus_food:
 
             self.food_system.update_bonus_food(None)
             mock_spawn_bonus_food.assert_called_once()
@@ -65,9 +69,14 @@ class FoodSystemShould(unittest.TestCase):
         self.food_system._bonus_food_active = True
         self.food_system._bonus_food_duration_timer = c.BONUS_FOOD_DURATION
 
-        with (patch.object(self.food_system, "_handle_bonus_food", return_value=True) as mock_handle_bonus_food,
-                patch.object(self.food_system, "deactivate_bonus_food") as mock_deactivate_bonus_food,
-              ):
+        with (
+            patch.object(
+                self.food_system, "_handle_bonus_food", return_value=True
+            ) as mock_handle_bonus_food,
+            patch.object(
+                self.food_system, "deactivate_bonus_food"
+            ) as mock_deactivate_bonus_food,
+        ):
 
             self.food_system.update_bonus_food(None)
             self.assertTrue(self.food_system.bonus_food_active)
@@ -78,19 +87,25 @@ class FoodSystemShould(unittest.TestCase):
         self.food_system._bonus_food_pos = [10, 10]
         self.snake.get_head_position.return_value = (10, 10)
 
-        with patch.object(self.food_system, "_collect_bonus_food") as mock_collect_bonus_food:
+        with patch.object(
+            self.food_system, "_collect_bonus_food"
+        ) as mock_collect_bonus_food:
             result = self.food_system._handle_bonus_food(None)
             self.assertTrue(result)
             mock_collect_bonus_food.assert_called_once()
 
-    def test_handleBonusFood_returnsFalse_whenSnakeHeadPositionNotEqualsBonusFoodPos(self):
+    def test_handleBonusFood_returnsFalse_whenSnakeHeadPositionNotEqualsBonusFoodPos(
+        self,
+    ):
         self.food_system._bonus_food_pos = [10, 10]
         self.snake.get_head_position.return_value = (10, 11)
 
         result = self.food_system._handle_bonus_food(None)
         self.assertFalse(result)
 
-    def test_handleBonusFood_incrementsBonusFoodDurationTimer_whenSHPosNotEqualsBFPos(self):
+    def test_handleBonusFood_incrementsBonusFoodDurationTimer_whenSHPosNotEqualsBFPos(
+        self,
+    ):
         self.food_system._bonus_food_pos = [10, 10]
         self.snake.get_head_position.return_value = (10, 11)
 
@@ -101,10 +116,13 @@ class FoodSystemShould(unittest.TestCase):
         self.food_system._bonus_food_pos = [10, 10]
         tail = Mock()
 
-        with (patch.object(self.food_system._particle_system, "spawn_particles") as mock_spawn_particles,
-              patch.object(self.food_system._snake, "grow"),
-              patch.object(self.food_system, "deactivate_bonus_food"),
-              ):
+        with (
+            patch.object(
+                self.food_system._particle_system, "spawn_particles"
+            ) as mock_spawn_particles,
+            patch.object(self.food_system._snake, "grow"),
+            patch.object(self.food_system, "deactivate_bonus_food"),
+        ):
 
             self.food_system._collect_bonus_food(tail)
             mock_spawn_particles.assert_called_once()
@@ -113,10 +131,11 @@ class FoodSystemShould(unittest.TestCase):
         self.food_system._bonus_food_pos = [10, 10]
         tail = Mock()
 
-        with (patch.object(self.food_system._particle_system, "spawn_particles"),
-              patch.object(self.food_system._snake, "grow") as mock_grow,
-              patch.object(self.food_system, "deactivate_bonus_food"),
-              ):
+        with (
+            patch.object(self.food_system._particle_system, "spawn_particles"),
+            patch.object(self.food_system._snake, "grow") as mock_grow,
+            patch.object(self.food_system, "deactivate_bonus_food"),
+        ):
 
             self.food_system._collect_bonus_food(tail)
             mock_grow.assert_called_once_with(tail)
@@ -125,58 +144,75 @@ class FoodSystemShould(unittest.TestCase):
         self.food_system._bonus_food_pos = [10, 10]
         tail = Mock()
 
-        with (patch.object(self.food_system._particle_system, "spawn_particles"),
-              patch.object(self.food_system._snake, "grow"),
-              patch.object(self.food_system, "deactivate_bonus_food") as mock_deactivate_bonus_food,
-              ):
+        with (
+            patch.object(self.food_system._particle_system, "spawn_particles"),
+            patch.object(self.food_system._snake, "grow"),
+            patch.object(
+                self.food_system, "deactivate_bonus_food"
+            ) as mock_deactivate_bonus_food,
+        ):
 
             self.food_system._collect_bonus_food(tail)
             mock_deactivate_bonus_food.assert_called_once()
 
     def test_spawnBonusFood_setsBonusFoodPos(self):
-        with patch.object(self.food_system, "_validate_food_position", return_value=(10, 10)):
+        with patch.object(
+            self.food_system, "_validate_food_position", return_value=(10, 10)
+        ):
             self.food_system._spawn_bonus_food()
             self.assertEqual((10, 10), self.food_system.bonus_food_pos)
 
     def test_spawnBonusFood_setsBonusFoodSpawnTimer(self):
         self.food_system._bonus_food_spawn_timer = 10
 
-        with patch.object(self.food_system, "_validate_food_position", return_value=(10, 10)):
+        with patch.object(
+            self.food_system, "_validate_food_position", return_value=(10, 10)
+        ):
             self.food_system._spawn_bonus_food()
             self.assertEqual(0, self.food_system.bonus_food_spawn_timer)
 
     def test_spawnBonusFood_setsBonusFoodActive(self):
         self.food_system._bonus_food_active = False
 
-        with patch.object(self.food_system, "_validate_food_position", return_value=(10, 10)):
+        with patch.object(
+            self.food_system, "_validate_food_position", return_value=(10, 10)
+        ):
             self.food_system._spawn_bonus_food()
             self.assertTrue(self.food_system.bonus_food_active)
 
     def test_spawnBonusFood_setsBonusFoodDurationTimer(self):
         self.food_system._bonus_food_duration_timer = 10
 
-        with patch.object(self.food_system, "_validate_food_position", return_value=(10, 10)):
+        with patch.object(
+            self.food_system, "_validate_food_position", return_value=(10, 10)
+        ):
             self.food_system._spawn_bonus_food()
             self.assertEqual(0, self.food_system.bonus_food_duration_timer)
 
     def test_spawnFood_setsFoodPos(self):
         self.food_system._new_food = True
 
-        with patch.object(self.food_system, "_validate_food_position", return_value=(10, 10)):
+        with patch.object(
+            self.food_system, "_validate_food_position", return_value=(10, 10)
+        ):
             self.food_system.spawn_food()
             self.assertEqual((10, 10), self.food_system.food_pos)
 
     def test_spawnFood_doesNotSetFoodPos_whenNewFoodFalse(self):
         self.food_system._new_food = False
 
-        with patch.object(self.food_system, "_validate_food_position", return_value=(10, 10)):
+        with patch.object(
+            self.food_system, "_validate_food_position", return_value=(10, 10)
+        ):
             self.food_system.spawn_food()
             self.assertEqual((0, 0), self.food_system.food_pos)
 
     def test_spawnFood_setsNewFoodFalse(self):
         self.food_system._new_food = True
 
-        with patch.object(self.food_system, "_validate_food_position", return_value=(10, 10)):
+        with patch.object(
+            self.food_system, "_validate_food_position", return_value=(10, 10)
+        ):
             self.food_system.spawn_food()
             self.assertFalse(self.food_system.new_food)
 
@@ -184,14 +220,14 @@ class FoodSystemShould(unittest.TestCase):
         self.snake.positions = [(5, 5)]
         random_pos = [3, 3]
 
-        with patch('src.core.food_system.get_random_position', return_value=random_pos):
+        with patch("src.core.food_system.get_random_position", return_value=random_pos):
             result = self.food_system._validate_food_position()
             self.assertEqual(random_pos, result)
 
     def test_validateFoodPosition_returnsDefaultPosition_whenMaxAttemptsReached(self):
         self.snake.positions = [(1, 1)]
 
-        with patch('src.core.food_system.get_random_position', return_value=[1, 1]):
+        with patch("src.core.food_system.get_random_position", return_value=[1, 1]):
             result = self.food_system._validate_food_position()
             self.assertEqual([1, 1], result)
 
@@ -200,7 +236,7 @@ class FoodSystemShould(unittest.TestCase):
         self.food_system._food_pos = (2, 2)
         random_pos = [3, 3]
 
-        with patch('src.core.food_system.get_random_position', return_value=random_pos):
+        with patch("src.core.food_system.get_random_position", return_value=random_pos):
             result = self.food_system._validate_food_position(bonus_food=True)
             self.assertEqual(random_pos, result)
 
@@ -210,7 +246,7 @@ class FoodSystemShould(unittest.TestCase):
         self.food_system._bonus_food_pos = (2, 2)
         random_pos = [3, 3]
 
-        with patch('src.core.food_system.get_random_position', return_value=random_pos):
+        with patch("src.core.food_system.get_random_position", return_value=random_pos):
             result = self.food_system._validate_food_position()
             self.assertEqual(random_pos, result)
 
@@ -267,10 +303,3 @@ class FoodSystemShould(unittest.TestCase):
 
         self.food_system.reset()
         self.assertFalse(self.food_system.bonus_food_active)
-
-
-
-
-
-
-
