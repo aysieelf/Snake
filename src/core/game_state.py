@@ -49,14 +49,7 @@ class GameState:
                 self._game_over = True
 
             if self.snake.get_head_position() == tuple(self.food_system.food_pos):
-                self.snake.grow(tail)
-                self.score += 1
-                self.food_system._new_food = True
-                food_pixel_pos = (
-                    self.food_system.food_pos[0] * c.CELL_SIZE,
-                    self.food_system.food_pos[1] * c.CELL_SIZE,
-                )
-                self.particle_system.spawn_particles(*food_pixel_pos, c.PASTEL_PINK)
+                self._handle_food_collision(tail)
 
             if self.food_system.update_bonus_food(tail):
                 self.score += 3
@@ -72,10 +65,14 @@ class GameState:
         return head_pos in self.snake.positions[1:]
 
     def _handle_food_collision(self, tail):
-        if self.snake.get_head_position() == tuple(self.food_system.food_pos):
-            self.snake.grow(tail)
-            self.score += 1
-            self._new_food = True
+        self.snake.grow(tail)
+        self.score += 1
+        self.food_system._new_food = True
+        food_pixel_pos = (
+            self.food_system.food_pos[0] * c.CELL_SIZE,
+            self.food_system.food_pos[1] * c.CELL_SIZE,
+        )
+        self.particle_system.spawn_particles(*food_pixel_pos, c.PASTEL_PINK)
 
     def _update_movement(self):
         if self._frame_count >= self._move_delay:

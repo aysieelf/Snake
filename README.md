@@ -97,6 +97,7 @@ python main.py
 - Food spawning system
 - Clean code organization in game development
 - How to create Particles in PyGame
+- Be careful what, when and where you reset objects and game state
 
 ## 💡 First Time Achievements
 - First time implementing a grid-based movement system
