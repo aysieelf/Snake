@@ -105,7 +105,7 @@ class GameStateShould(unittest.TestCase):
         self.game_state._game_over = False
         self.game_state._paused = False
         self.game_state.food_system._food_pos = (0, 0)
-        with (patch.object(self.game_state, "_update_movement") as mock_update_movement,
+        with (patch.object(self.game_state, "_update_movement"),
               patch.object(self.game_state, "_check_wall_collision", return_value=False),
               patch.object(self.game_state, "_check_self_collision", return_value=False),
               patch.object(self.game_state.snake, "get_head_position", return_value=(1, 1)),

@@ -53,7 +53,7 @@ class FoodSystemShould(unittest.TestCase):
         self.food_system.update_bonus_food(None)
         self.assertEqual(1, self.food_system.bonus_food_spawn_timer)
 
-    def test_updateBonusFood_spawnsBonusFood_whenBonusFoodSpawnTimerEqualsBonusFoodSpawnInterval(self):
+    def test_updateBonusFood_spawnsBonusFood_whenBonusFSTEqualBonusFSI(self):
         self.food_system._bonus_food_spawn_timer = c.BONUS_FOOD_SPAWN_INTERVAL - 1
 
         with patch.object(self.food_system, "_spawn_bonus_food") as mock_spawn_bonus_food:
@@ -61,7 +61,7 @@ class FoodSystemShould(unittest.TestCase):
             self.food_system.update_bonus_food(None)
             mock_spawn_bonus_food.assert_called_once()
 
-    def test_updateBonusFood_deactivatesBonusFood_whenBonusFoodDurationTimerEqualsBonusFoodDuration(self):
+    def test_updateBonusFood_deactivatesBonusFood_whenBonusFDTEqualsBonusFD(self):
         self.food_system._bonus_food_active = True
         self.food_system._bonus_food_duration_timer = c.BONUS_FOOD_DURATION
 
@@ -90,7 +90,7 @@ class FoodSystemShould(unittest.TestCase):
         result = self.food_system._handle_bonus_food(None)
         self.assertFalse(result)
 
-    def test_handleBonusFood_incrementsBonusFoodDurationTimer_whenSnakeHeadPositionNotEqualsBonusFoodPos(self):
+    def test_handleBonusFood_incrementsBonusFoodDurationTimer_whenSnakeHeadPosNotEqualsBonusFoodPos(self):
         self.food_system._bonus_food_pos = [10, 10]
         self.snake.get_head_position.return_value = (10, 11)
 
