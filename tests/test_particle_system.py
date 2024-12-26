@@ -11,6 +11,7 @@ def create_fake_particle(x, y, color):
     particle.color = color
     return particle
 
+
 class ParticleSystemShould(unittest.TestCase):
     def setUp(self):
         self.screen = Mock()
@@ -43,6 +44,8 @@ class ParticleSystemShould(unittest.TestCase):
             create_fake_particle(0, 0, (255, 255, 255)),
             create_fake_particle(0, 0, (255, 255, 255)),
         ]
-        with patch('src.effects.particle_system.pygame.draw.circle') as mock_draw_circle:
+        with patch(
+            "src.effects.particle_system.pygame.draw.circle"
+        ) as mock_draw_circle:
             self.particle_system.draw()
             self.assertEqual(2, mock_draw_circle.call_count)

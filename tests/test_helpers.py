@@ -1,7 +1,9 @@
 import unittest
-from unittest.mock import patch, Mock
+from unittest.mock import Mock, patch
+
 from src.utils import constants as c
 from src.utils.helpers import get_random_position
+
 
 class GetRandomPositionShould(unittest.TestCase):
     def test_init_returnsListWithTwoElements(self):
