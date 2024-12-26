@@ -102,8 +102,8 @@ class FoodSystemShould(unittest.TestCase):
         tail = Mock()
 
         with (patch.object(self.food_system._particle_system, "spawn_particles") as mock_spawn_particles,
-              patch.object(self.food_system._snake, "grow") as mock_grow,
-              patch.object(self.food_system, "deactivate_bonus_food") as mock_deactivate_bonus_food,
+              patch.object(self.food_system._snake, "grow"),
+              patch.object(self.food_system, "deactivate_bonus_food"),
               ):
 
             self.food_system._collect_bonus_food(tail)
@@ -113,9 +113,9 @@ class FoodSystemShould(unittest.TestCase):
         self.food_system._bonus_food_pos = [10, 10]
         tail = Mock()
 
-        with (patch.object(self.food_system._particle_system, "spawn_particles") as mock_spawn_particles,
+        with (patch.object(self.food_system._particle_system, "spawn_particles"),
               patch.object(self.food_system._snake, "grow") as mock_grow,
-              patch.object(self.food_system, "deactivate_bonus_food") as mock_deactivate_bonus_food,
+              patch.object(self.food_system, "deactivate_bonus_food"),
               ):
 
             self.food_system._collect_bonus_food(tail)
@@ -125,8 +125,8 @@ class FoodSystemShould(unittest.TestCase):
         self.food_system._bonus_food_pos = [10, 10]
         tail = Mock()
 
-        with (patch.object(self.food_system._particle_system, "spawn_particles") as mock_spawn_particles,
-              patch.object(self.food_system._snake, "grow") as mock_grow,
+        with (patch.object(self.food_system._particle_system, "spawn_particles"),
+              patch.object(self.food_system._snake, "grow"),
               patch.object(self.food_system, "deactivate_bonus_food") as mock_deactivate_bonus_food,
               ):
 

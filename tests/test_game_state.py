@@ -69,8 +69,8 @@ class GameStateShould(unittest.TestCase):
     def test_update_setsGameOverToTrue_whenWallCollision(self):
         self.game_state._game_over = False
         self.game_state._paused = False
-        with (patch.object(self.game_state, "_update_movement") as mock_update_movement,
-              patch.object(self.game_state, "_check_wall_collision", return_value=True) as mock_check_wall_collision,
+        with (patch.object(self.game_state, "_update_movement"),
+              patch.object(self.game_state, "_check_wall_collision", return_value=True),
               ):
 
             self.game_state.update()
@@ -79,9 +79,9 @@ class GameStateShould(unittest.TestCase):
     def test_update_setsGameOverToTrue_whenSelfCollision(self):
         self.game_state._game_over = False
         self.game_state._paused = False
-        with (patch.object(self.game_state, "_update_movement") as mock_update_movement,
-              patch.object(self.game_state, "_check_wall_collision", return_value=False) as mock_check_wall_collision,
-              patch.object(self.game_state, "_check_self_collision", return_value=True) as mock_check_self_collision,
+        with (patch.object(self.game_state, "_update_movement"),
+              patch.object(self.game_state, "_check_wall_collision", return_value=False),
+              patch.object(self.game_state, "_check_self_collision", return_value=True),
               ):
 
             self.game_state.update()
@@ -91,10 +91,10 @@ class GameStateShould(unittest.TestCase):
         self.game_state._game_over = False
         self.game_state._paused = False
         self.game_state.food_system._food_pos = (0, 0)
-        with (patch.object(self.game_state, "_update_movement") as mock_update_movement,
-              patch.object(self.game_state, "_check_wall_collision", return_value=False) as mock_check_wall_collision,
-              patch.object(self.game_state, "_check_self_collision", return_value=False) as mock_check_self_collision,
-              patch.object(self.game_state.snake, "get_head_position", return_value=(0, 0)) as mock_get_head_position,
+        with (patch.object(self.game_state, "_update_movement"),
+              patch.object(self.game_state, "_check_wall_collision", return_value=False),
+              patch.object(self.game_state, "_check_self_collision", return_value=False),
+              patch.object(self.game_state.snake, "get_head_position", return_value=(0, 0)),
               patch.object(self.game_state, "_handle_food_collision") as mock_handle_food_collision,
               ):
 
@@ -106,9 +106,9 @@ class GameStateShould(unittest.TestCase):
         self.game_state._paused = False
         self.game_state.food_system._food_pos = (0, 0)
         with (patch.object(self.game_state, "_update_movement") as mock_update_movement,
-              patch.object(self.game_state, "_check_wall_collision", return_value=False) as mock_check_wall_collision,
-              patch.object(self.game_state, "_check_self_collision", return_value=False) as mock_check_self_collision,
-              patch.object(self.game_state.snake, "get_head_position", return_value=(1, 1)) as mock_get_head_position,
+              patch.object(self.game_state, "_check_wall_collision", return_value=False),
+              patch.object(self.game_state, "_check_self_collision", return_value=False),
+              patch.object(self.game_state.snake, "get_head_position", return_value=(1, 1)),
               patch.object(self.game_state, "_handle_food_collision") as mock_handle_food_collision,
               ):
 
@@ -119,11 +119,11 @@ class GameStateShould(unittest.TestCase):
         self.game_state._game_over = False
         self.game_state._paused = False
         self.game_state.food_system._food_pos = (0, 0)
-        with (patch.object(self.game_state, "_update_movement") as mock_update_movement,
-              patch.object(self.game_state, "_check_wall_collision", return_value=False) as mock_check_wall_collision,
-              patch.object(self.game_state, "_check_self_collision", return_value=False) as mock_check_self_collision,
-              patch.object(self.game_state.snake, "get_head_position", return_value=(1, 1)) as mock_get_head_position,
-              patch.object(self.game_state.food_system, "update_bonus_food", return_value=True) as mock_update_bonus_food,
+        with (patch.object(self.game_state, "_update_movement"),
+              patch.object(self.game_state, "_check_wall_collision", return_value=False),
+              patch.object(self.game_state, "_check_self_collision", return_value=False),
+              patch.object(self.game_state.snake, "get_head_position", return_value=(1, 1)),
+              patch.object(self.game_state.food_system, "update_bonus_food", return_value=True),
               ):
 
             self.game_state.update()
@@ -154,7 +154,7 @@ class GameStateShould(unittest.TestCase):
     def test_handleFoodCollision_growsSnake(self):
         tail = (10, 10)
         with (patch.object(self.game_state.snake, "grow") as mock_grow,
-              patch.object(self.game_state.particle_system, "spawn_particles") as mock_spawn_particles,
+              patch.object(self.game_state.particle_system, "spawn_particles"),
               ):
             self.game_state._handle_food_collision(tail)
             mock_grow.assert_called_once_with(tail)
@@ -162,8 +162,8 @@ class GameStateShould(unittest.TestCase):
     def test_handleFoodCollision_incrementsScoreByOne(self):
         tail = (10, 10)
         self.game_state.score = 0
-        with (patch.object(self.game_state.snake, "grow") as mock_grow,
-              patch.object(self.game_state.particle_system, "spawn_particles") as mock_spawn_particles,
+        with (patch.object(self.game_state.snake, "grow"),
+              patch.object(self.game_state.particle_system, "spawn_particles"),
               ):
             self.game_state._handle_food_collision(tail)
             self.assertEqual(1, self.game_state.score)
@@ -171,15 +171,15 @@ class GameStateShould(unittest.TestCase):
     def test_handleFoodCollision_setsNewFoodToTrue(self):
         tail = (10, 10)
         self.game_state.food_system._new_food = False
-        with (patch.object(self.game_state.snake, "grow") as mock_grow,
-              patch.object(self.game_state.particle_system, "spawn_particles") as mock_spawn_particles,
+        with (patch.object(self.game_state.snake, "grow"),
+              patch.object(self.game_state.particle_system, "spawn_particles"),
               ):
             self.game_state._handle_food_collision(tail)
             self.assertTrue(self.game_state.food_system.new_food)
 
     def test_handleFoodCollision_callsParticleSystemSpawnParticles(self):
         tail = (10, 10)
-        with (patch.object(self.game_state.snake, "grow") as mock_grow,
+        with (patch.object(self.game_state.snake, "grow"),
               patch.object(self.game_state.particle_system, "spawn_particles") as mock_spawn_particles,
               ):
 
@@ -200,12 +200,12 @@ class GameStateShould(unittest.TestCase):
 
     def test_updateMovement_returnsNone_whenFrameCountLessThanMoveDelay(self):
         self.game_state._frame_count = 19
-        with patch.object(self.game_state.snake, "move") as mock_move:
+        with patch.object(self.game_state.snake, "move"):
             self.assertIsNone(self.game_state._update_movement())
 
     def test_updateMovement_setsFrameCountToZero_whenFrameCountMoreThanMoveDelay(self):
         self.game_state._frame_count = 21
-        with patch.object(self.game_state.snake, "move") as mock_move:
+        with patch.object(self.game_state.snake, "move"):
             self.game_state._update_movement()
             self.assertEqual(0, self.game_state._frame_count)
 
@@ -231,7 +231,7 @@ class GameStateShould(unittest.TestCase):
 
     def test_startGame_setsStartScreenToFalse(self):
         self.game_state._start_screen = True
-        with patch.object(self.game_state, "reset") as mock_reset:
+        with patch.object(self.game_state, "reset"):
             self.game_state.start_game()
             self.assertFalse(self.game_state.start_screen)
 
