@@ -90,7 +90,7 @@ class FoodSystemShould(unittest.TestCase):
         result = self.food_system._handle_bonus_food(None)
         self.assertFalse(result)
 
-    def test_handleBonusFood_incrementsBonusFoodDurationTimer_whenSnakeHeadPosNotEqualsBonusFoodPos(self):
+    def test_handleBonusFood_incrementsBonusFoodDurationTimer_whenSHPosNotEqualsBFPos(self):
         self.food_system._bonus_food_pos = [10, 10]
         self.snake.get_head_position.return_value = (10, 11)
 
