@@ -285,15 +285,10 @@ class GameStateShould(unittest.TestCase):
         self.game_state.reset()
         self.assertIsNotNone(self.game_state.snake)
 
-    def test_reset_createsNewFoodSystem(self):
-        self.game_state.food_system = None
-        self.game_state.reset()
-        self.assertIsNotNone(self.game_state.food_system)
-
-    # TODO: find out why this test is failing
-    # def test_reset_callsFoodSystemReset(self):
-    #     with patch.object(self.game_state.food_system, "reset") as mock_reset:
-    #         self.game_state.reset()
-    #         mock_reset.assert_called_once()
+    def test_reset_createNewFoodSystemAndResetsIt(self):
+        with (patch('src.core.game_state.FoodSystem') as mock_food_system):
+            self.game_state.reset()
+            mock_food_system.assert_called_once()
+            mock_food_system().reset.assert_called_once()
 
 

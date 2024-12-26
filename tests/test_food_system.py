@@ -180,9 +180,39 @@ class FoodSystemShould(unittest.TestCase):
             self.food_system.spawn_food()
             self.assertFalse(self.food_system.new_food)
 
-    # TODO: Implement tests for _validate_food_position
-    def test_validateFoodPosition_returnsValidPosition(self):
-        pass
+    def test_validateFoodPosition_returnsRandomPosition_whenPositionValid(self):
+        self.snake.positions = [(5, 5)]
+        random_pos = [3, 3]
+
+        with patch('src.core.food_system.get_random_position', return_value=random_pos):
+            result = self.food_system._validate_food_position()
+            self.assertEqual(random_pos, result)
+
+    def test_validateFoodPosition_returnsDefaultPosition_whenMaxAttemptsReached(self):
+        self.snake.positions = [(1, 1)]
+
+        with patch('src.core.food_system.get_random_position', return_value=[1, 1]):
+            result = self.food_system._validate_food_position()
+            self.assertEqual([1, 1], result)
+
+    def test_validateFoodPosition_forBonusFood_avoidsSnakeAndFoodPos(self):
+        self.snake.positions = [(5, 5)]
+        self.food_system._food_pos = (2, 2)
+        random_pos = [3, 3]
+
+        with patch('src.core.food_system.get_random_position', return_value=random_pos):
+            result = self.food_system._validate_food_position(bonus_food=True)
+            self.assertEqual(random_pos, result)
+
+    def test_validateFoodPosition_forRegularFood_avoidsBonusFoodPos(self):
+        self.snake.positions = [(5, 5)]
+        self.food_system._bonus_food_active = True
+        self.food_system._bonus_food_pos = (2, 2)
+        random_pos = [3, 3]
+
+        with patch('src.core.food_system.get_random_position', return_value=random_pos):
+            result = self.food_system._validate_food_position()
+            self.assertEqual(random_pos, result)
 
     def test_deactivateBonusFood_setsBonusFoodActiveToFalse(self):
         self.food_system._bonus_food_active = True
