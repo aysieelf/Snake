@@ -1,10 +1,10 @@
 import unittest
 from unittest.mock import Mock, patch
 
-import pygame
-
 from src.event_handler import EventHandler
 from src.utils import constants as c
+
+import pygame
 
 
 class EventHandlerShould(unittest.TestCase):
@@ -54,9 +54,10 @@ class EventHandlerShould(unittest.TestCase):
         mock_event = Mock()
         mock_event.type = pygame.MOUSEBUTTONDOWN
 
-        with (patch("pygame.event.get", return_value=[mock_event]),
-              patch.object(self.event_handler, "_handle_start_screen_click")
-              ):
+        with (
+            patch("pygame.event.get", return_value=[mock_event]),
+            patch.object(self.event_handler, "_handle_start_screen_click"),
+        ):
             result = self.event_handler.handle_events()
 
             self.assertTrue(result)
@@ -65,9 +66,12 @@ class EventHandlerShould(unittest.TestCase):
         mock_event = Mock()
         mock_event.type = pygame.MOUSEBUTTONDOWN
 
-        with (patch("pygame.event.get", return_value=[mock_event]),
-              patch.object(self.event_handler, "_handle_start_screen_click") as mock_handle_start_screen_click
-              ):
+        with (
+            patch("pygame.event.get", return_value=[mock_event]),
+            patch.object(
+                self.event_handler, "_handle_start_screen_click"
+            ) as mock_handle_start_screen_click,
+        ):
             self.event_handler.handle_events()
 
             mock_handle_start_screen_click.assert_called_once()
@@ -93,7 +97,9 @@ class EventHandlerShould(unittest.TestCase):
         mock_event = Mock()
         mock_event.key = pygame.K_q
 
-        with patch.object(self.event_handler, "_handle_exit_game") as mock_handle_exit_game:
+        with patch.object(
+            self.event_handler, "_handle_exit_game"
+        ) as mock_handle_exit_game:
             self.event_handler._handle_keyboard(mock_event)
 
             mock_handle_exit_game.assert_called_once()
@@ -110,7 +116,9 @@ class EventHandlerShould(unittest.TestCase):
         mock_event = Mock()
         mock_event.key = pygame.K_w
 
-        with patch.object(self.event_handler, "_handle_direction_change") as mock_handle_direction_change:
+        with patch.object(
+            self.event_handler, "_handle_direction_change"
+        ) as mock_handle_direction_change:
             self.event_handler._handle_keyboard(mock_event)
 
             mock_handle_direction_change.assert_called_once_with(pygame.K_w)
@@ -119,7 +127,9 @@ class EventHandlerShould(unittest.TestCase):
         mock_event = Mock()
         mock_event.key = pygame.K_UP
 
-        with patch.object(self.event_handler, "_handle_direction_change") as mock_handle_direction_change:
+        with patch.object(
+            self.event_handler, "_handle_direction_change"
+        ) as mock_handle_direction_change:
             self.event_handler._handle_keyboard(mock_event)
 
             mock_handle_direction_change.assert_called_once_with(pygame.K_UP)
@@ -128,7 +138,9 @@ class EventHandlerShould(unittest.TestCase):
         mock_event = Mock()
         mock_event.key = pygame.K_a
 
-        with patch.object(self.event_handler, "_handle_direction_change") as mock_handle_direction_change:
+        with patch.object(
+            self.event_handler, "_handle_direction_change"
+        ) as mock_handle_direction_change:
             self.event_handler._handle_keyboard(mock_event)
 
             mock_handle_direction_change.assert_called_once_with(pygame.K_a)
@@ -137,7 +149,9 @@ class EventHandlerShould(unittest.TestCase):
         mock_event = Mock()
         mock_event.key = pygame.K_LEFT
 
-        with patch.object(self.event_handler, "_handle_direction_change") as mock_handle_direction_change:
+        with patch.object(
+            self.event_handler, "_handle_direction_change"
+        ) as mock_handle_direction_change:
             self.event_handler._handle_keyboard(mock_event)
 
             mock_handle_direction_change.assert_called_once_with(pygame.K_LEFT)
@@ -146,7 +160,9 @@ class EventHandlerShould(unittest.TestCase):
         mock_event = Mock()
         mock_event.key = pygame.K_s
 
-        with patch.object(self.event_handler, "_handle_direction_change") as mock_handle_direction_change:
+        with patch.object(
+            self.event_handler, "_handle_direction_change"
+        ) as mock_handle_direction_change:
             self.event_handler._handle_keyboard(mock_event)
 
             mock_handle_direction_change.assert_called_once_with(pygame.K_s)
@@ -155,7 +171,9 @@ class EventHandlerShould(unittest.TestCase):
         mock_event = Mock()
         mock_event.key = pygame.K_DOWN
 
-        with patch.object(self.event_handler, "_handle_direction_change") as mock_handle_direction_change:
+        with patch.object(
+            self.event_handler, "_handle_direction_change"
+        ) as mock_handle_direction_change:
             self.event_handler._handle_keyboard(mock_event)
 
             mock_handle_direction_change.assert_called_once_with(pygame.K_DOWN)
@@ -164,7 +182,9 @@ class EventHandlerShould(unittest.TestCase):
         mock_event = Mock()
         mock_event.key = pygame.K_d
 
-        with patch.object(self.event_handler, "_handle_direction_change") as mock_handle_direction_change:
+        with patch.object(
+            self.event_handler, "_handle_direction_change"
+        ) as mock_handle_direction_change:
             self.event_handler._handle_keyboard(mock_event)
 
             mock_handle_direction_change.assert_called_once_with(pygame.K_d)
@@ -173,7 +193,9 @@ class EventHandlerShould(unittest.TestCase):
         mock_event = Mock()
         mock_event.key = pygame.K_RIGHT
 
-        with patch.object(self.event_handler, "_handle_direction_change") as mock_handle_direction_change:
+        with patch.object(
+            self.event_handler, "_handle_direction_change"
+        ) as mock_handle_direction_change:
             self.event_handler._handle_keyboard(mock_event)
 
             mock_handle_direction_change.assert_called_once_with(pygame.K_RIGHT)
@@ -182,7 +204,9 @@ class EventHandlerShould(unittest.TestCase):
         mock_event = Mock()
         mock_event.key = pygame.K_SPACE
 
-        with patch.object(self.event_handler, "_handle_space_key") as mock_handle_space_key:
+        with patch.object(
+            self.event_handler, "_handle_space_key"
+        ) as mock_handle_space_key:
             self.event_handler._handle_keyboard(mock_event)
 
             mock_handle_space_key.assert_called_once()
@@ -198,8 +222,7 @@ class EventHandlerShould(unittest.TestCase):
     def test_handleExitGame_pausesGame_whenNotStartScreen(self):
         self.game_state.start_screen = False
 
-        with (patch.object(self.game_state, "pause_game") as mock_pause_game,
-              ):
+        with (patch.object(self.game_state, "pause_game") as mock_pause_game,):
             self.event_handler._handle_exit_game()
 
             mock_pause_game.assert_called_once()
@@ -207,8 +230,11 @@ class EventHandlerShould(unittest.TestCase):
     def test_handleExitGame_callsExitToStartScreen_whenNotStartScreen(self):
         self.game_state.start_screen = False
 
-        with (patch.object(self.game_state, "exit_to_start_screen") as mock_exit_to_start_screen,
-              ):
+        with (
+            patch.object(
+                self.game_state, "exit_to_start_screen"
+            ) as mock_exit_to_start_screen,
+        ):
             self.event_handler._handle_exit_game()
 
             mock_exit_to_start_screen.assert_called_once()
@@ -280,10 +306,11 @@ class EventHandlerShould(unittest.TestCase):
         mock_rect = Mock()
         mock_rect.collidepoint.return_value = True
 
-        with (patch("src.event_handler.get_start_button_rect", return_value=mock_rect),
-              patch.object(self.game_state, "start_game") as mock_start_game,
-              patch("pygame.mouse.get_pos", return_value=(0, 0)),
-              ):
+        with (
+            patch("src.event_handler.get_start_button_rect", return_value=mock_rect),
+            patch.object(self.game_state, "start_game") as mock_start_game,
+            patch("pygame.mouse.get_pos", return_value=(0, 0)),
+        ):
             self.event_handler._handle_start_screen_click()
             mock_start_game.assert_called_once()
 
@@ -291,9 +318,10 @@ class EventHandlerShould(unittest.TestCase):
         mock_rect = Mock()
         mock_rect.collidepoint.return_value = False
 
-        with (patch("src.event_handler.get_start_button_rect", return_value=mock_rect),
-              patch.object(self.game_state, "start_game") as mock_start_game,
-              patch("pygame.mouse.get_pos", return_value=(0, 0)),
-              ):
+        with (
+            patch("src.event_handler.get_start_button_rect", return_value=mock_rect),
+            patch.object(self.game_state, "start_game") as mock_start_game,
+            patch("pygame.mouse.get_pos", return_value=(0, 0)),
+        ):
             self.event_handler._handle_start_screen_click()
             mock_start_game.assert_not_called()
