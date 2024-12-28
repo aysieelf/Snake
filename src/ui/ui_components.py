@@ -3,11 +3,29 @@ from src.utils import constants as c
 import pygame
 
 
-def create_rectangle(screen, color, x, y, width, height):
+def create_rectangle(
+        screen: pygame.Surface,
+        color: tuple,
+        x: int,
+        y: int,
+        width: int,
+        height: int,
+) -> None:
+    """
+    Create a rectangle on the screen.
+
+    Args:
+        screen (pygame.Surface): The screen to draw on
+        color (tuple): The color of the rectangle
+        x (int): The x position of the rectangle
+        y (int): The y position of the rectangle
+        width (int): The width of the rectangle
+        height (int): The height of the rectangle
+    """
     pygame.draw.rect(screen, color, (x, y, width, height))
 
 
-def draw_start_screen(screen: pygame.Surface):
+def draw_start_screen(screen: pygame.Surface) -> None:
     """
     Draw the start screen on the screen.
 
@@ -21,7 +39,13 @@ def draw_start_screen(screen: pygame.Surface):
     _draw_start_button(screen)
 
 
-def create_title(screen: pygame.Surface):
+def create_title(screen: pygame.Surface) -> None:
+    """
+    Create the title on the screen.
+
+    Args:
+        screen (pygame.Surface): The screen to draw on
+    """
     title_font = pygame.font.SysFont(c.TITLE_FONT, c.TITLE_FONT_SIZE)
     title_surface = title_font.render(c.TITLE_TEXT, True, c.TITLE_COLOR)
     title_rect = title_surface.get_rect(centerx=c.WINDOW_SIZE // 2, y=c.TITLE_Y_POS)
@@ -75,12 +99,14 @@ def _draw_start_button(screen: pygame.Surface | None) -> pygame.Rect:
     return button_rect
 
 
-def draw_instructions(screen: pygame.Surface, first=0, last=len(c.INSTRUCTIONS)):
+def draw_instructions(screen: pygame.Surface, first: int=0, last: int=len(c.INSTRUCTIONS)):
     """
     Draw the instructions on the screen.
 
     Args:
         screen (pygame.Surface): The screen to draw on
+        first (int): The first instruction to draw
+        last (int): The last instruction to draw
     """
     curr_y_pos = c.INSTRUCTIONS_POS
     for instruction in c.INSTRUCTIONS[first:last]:
