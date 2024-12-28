@@ -72,7 +72,8 @@ class FoodSystem:
         """
         Handle the bonus food state.
         If the bonus food was collected, grow the snake and deactivate the bonus food
-        If the bonus food duration timer has reached the duration, deactivate the bonus food
+        If the bonus food duration timer has reached the duration,
+        deactivate the bonus food
 
         Args:
             tail: list[int] - The tail of the snake
