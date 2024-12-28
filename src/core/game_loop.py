@@ -6,9 +6,7 @@ import pygame
 
 
 def game_loop(
-        screen: pygame.Surface,
-        game_state: GameState,
-        clock: pygame.time.Clock
+    screen: pygame.Surface, game_state: GameState, clock: pygame.time.Clock
 ) -> None:
     """
     Handles the game loop

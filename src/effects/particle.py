@@ -5,6 +5,7 @@ class Particle:
     """
     A simple particle class that represents a single particle in the particle system.
     """
+
     def __init__(self, x: int, y: int, color: tuple):
         self.x = x
         self.y = y

@@ -5,6 +5,7 @@ class Snake:
     """
     Snake class that represents the snake in the game.
     """
+
     def __init__(self):
         self._length: int = c.SNAKE_SIZE
         self._positions: list[tuple[int, ...]] = [

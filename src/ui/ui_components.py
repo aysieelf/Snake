@@ -4,12 +4,12 @@ import pygame
 
 
 def create_rectangle(
-        screen: pygame.Surface,
-        color: tuple,
-        x: int,
-        y: int,
-        width: int,
-        height: int,
+    screen: pygame.Surface,
+    color: tuple,
+    x: int,
+    y: int,
+    width: int,
+    height: int,
 ) -> None:
     """
     Create a rectangle on the screen.
@@ -99,7 +99,9 @@ def _draw_start_button(screen: pygame.Surface | None) -> pygame.Rect:
     return button_rect
 
 
-def draw_instructions(screen: pygame.Surface, first: int=0, last: int=len(c.INSTRUCTIONS)):
+def draw_instructions(
+    screen: pygame.Surface, first: int = 0, last: int = len(c.INSTRUCTIONS)
+):
     """
     Draw the instructions on the screen.
 

@@ -8,6 +8,7 @@ class FoodSystem:
     """
     The FoodSystem class is responsible for managing the food items in the game
     """
+
     def __init__(self, snake: Snake, particle_system: ParticleSystem):
         self._snake = snake
         self._particle_system = particle_system
@@ -125,7 +126,7 @@ class FoodSystem:
             self._new_food = False
             self._food_pos = self._validate_food_position()
 
-    def _validate_food_position(self, bonus_food: bool=False) -> list[int]:
+    def _validate_food_position(self, bonus_food: bool = False) -> list[int]:
         """
         Validate the food position
         Generate random positions until a valid position is found

@@ -7,6 +7,7 @@ class ParticleSystem:
     """
     A simple particle system class that manages a collection of particles.
     """
+
     def __init__(self, screen: pygame.Surface):
         self.screen = screen
         self.particles: list = []

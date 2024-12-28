@@ -84,7 +84,9 @@ class Renderer:
             (snake_left_eye[0], snake_left_eye[1], c.EYE_SIZE, c.EYE_SIZE),
         )
 
-    def _get_eyes_positions(self, head_pos: tuple[int, ...], direction: tuple[int, ...]) -> tuple[tuple[int, ...], ...]:
+    def _get_eyes_positions(
+        self, head_pos: tuple[int, ...], direction: tuple[int, ...]
+    ) -> tuple[tuple[int, ...], ...]:
         """
         Calculate eyes positions based on head position and direction
 
@@ -123,7 +125,7 @@ class Renderer:
                 (head_pos[0] + c.EYE_OFFSET_FAR, head_pos[1] + c.EYE_DEPTH),
             )
 
-    def _draw_food(self, food_pos: tuple[int, ...], bonus_food: bool=False) -> None:
+    def _draw_food(self, food_pos: tuple[int, ...], bonus_food: bool = False) -> None:
         """
         Render the food on the screen
 
