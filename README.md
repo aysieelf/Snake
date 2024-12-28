@@ -62,7 +62,7 @@ python main.py
 - Space - Start game / Pause/Resume game
 
 ## ⏳ Current Progress
-[▓▓▓▓▓▓▓░░░] 70%
+[▓▓▓▓▓▓▓▓░░] 80%
 
 - [x] Project setup
 - [x] Snake implementation
