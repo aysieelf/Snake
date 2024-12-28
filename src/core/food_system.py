@@ -50,7 +50,7 @@ class FoodSystem:
         If the bonus food is active, handle the bonus food state
         If the bonus food spawn timer has reached the interval, spawn the bonus food
 
-        Params:
+        Args:
             tail: list[int] - The tail of the snake
 
         Returns:
@@ -74,7 +74,7 @@ class FoodSystem:
         If the bonus food was collected, grow the snake and deactivate the bonus food
         If the bonus food duration timer has reached the duration, deactivate the bonus food
 
-        Params:
+        Args:
             tail: list[int] - The tail of the snake
 
         Returns:
@@ -93,7 +93,7 @@ class FoodSystem:
         Spawn particles at the bonus food position
         Grow the snake and deactivate the bonus food
 
-        Params:
+        Args:
             tail: list[int] - The tail of the snake
         """
         bonus_pixel_pos = (
@@ -130,7 +130,7 @@ class FoodSystem:
         Generate random positions until a valid position is found
         A valid position is one that is not occupied by the snake or another food item
 
-        Params:
+        Args:
             bonus_food: bool - Whether the food is a bonus food or not
 
         Returns:

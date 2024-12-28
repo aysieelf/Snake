@@ -13,33 +13,35 @@ class GameState:
     """
 
     def __init__(self):
-        self.snake = Snake()
-        self.score = 0
+        self.snake: Snake = Snake()
+        self.score: int = 0
 
-        self._frame_count = 0
-        self._move_delay = 20
+        self._frame_count: int = 0
+        self._move_delay: int = 20
 
-        self.particle_system = ParticleSystem(None)
-        self.food_system = FoodSystem(self.snake, self.particle_system)
+        self.particle_system: ParticleSystem = ParticleSystem(None)
+        self.food_system: FoodSystem = FoodSystem(self.snake, self.particle_system)
 
-        self._game_over = False
-        self._paused = True
-        self._start_screen = True
+        self._game_over: bool = False
+        self._paused: bool = True
+        self._start_screen: bool = True
 
     @property
-    def game_over(self):
+    def game_over(self) -> bool:
         return self._game_over
 
     @property
-    def paused(self):
+    def paused(self) -> bool:
         return self._paused
 
     @property
-    def start_screen(self):
+    def start_screen(self) -> bool:
         return self._start_screen
 
-    def update(self):
-        """Update game state including snake movement based on current speed"""
+    def update(self) -> None:
+        """
+        Update game state including snake movement based on current speed
+        """
         self._frame_count += 1
         self._update_speed()
 
@@ -54,17 +56,36 @@ class GameState:
             if self.food_system.update_bonus_food(tail):
                 self.score += 3
 
-    def _check_wall_collision(self):
+    def _check_wall_collision(self) -> bool:
+        """
+        Check if the snake has collided with the wall
+
+        Returns:
+            bool: True if the snake has collided with the wall, False otherwise
+        """
         head_x, head_y = self.snake.get_head_position()
         return (
             head_x < 0 or head_x >= c.GRID_SIZE or head_y < 0 or head_y >= c.GRID_SIZE
         )
 
-    def _check_self_collision(self):
+    def _check_self_collision(self) -> bool:
+        """
+        Check if the snake has collided with itself
+
+        Returns:
+            bool: True if the snake has collided with itself, False otherwise
+        """
         head_pos = self.snake.get_head_position()
         return head_pos in self.snake.positions[1:]
 
-    def _handle_food_collision(self, tail):
+    def _handle_food_collision(self, tail: list[int]) -> None:
+        """
+        Handle the collision between the snake and the food
+        Grow the snake, increase the score and spawn new food
+
+        Args:
+            tail: list[int] - The tail of the snake
+        """
         self.snake.grow(tail)
         self.score += 1
         self.food_system._new_food = True
@@ -74,14 +95,22 @@ class GameState:
         )
         self.particle_system.spawn_particles(*food_pixel_pos, c.PASTEL_PINK)
 
-    def _update_movement(self):
+    def _update_movement(self) -> list[int]:
+        """
+        Update the snake movement based on the current speed
+
+        Returns:
+            list[int]: The tail of the snake
+        """
         if self._frame_count >= self._move_delay:
             tail = self.snake.move()
             self._frame_count = 0
             return tail
 
-    def _update_speed(self):
-        """Adjust snake speed based on score"""
+    def _update_speed(self) -> None:
+        """
+        Adjust snake speed based on score
+        """
         base_delay = 20
         min_delay = 5
 
@@ -94,17 +123,29 @@ class GameState:
 
         self._move_delay = max(min_delay, new_delay)
 
-    def start_game(self):
+    def start_game(self) -> None:
+        """
+        Start the game
+        """
         self.reset()
         self._start_screen = False
 
-    def exit_to_start_screen(self):
+    def exit_to_start_screen(self) -> None:
+        """
+        Exit the game to the start screen
+        """
         self._start_screen = True
 
-    def pause_game(self):
+    def pause_game(self) -> None:
+        """
+        Pause the game
+        """
         self._paused = True
 
-    def continue_game(self):
+    def continue_game(self) -> None:
+        """
+        Continue the game
+        """
         self._paused = False
 
     def reset(self) -> None:
