@@ -115,10 +115,23 @@ python main.py
 - First time handling complex game states
 
 ## 📸 Screenshots
-...
+
+### Start Screen
+![Start Screen](assets/screenshots/start_screen_20241228_230858.png)
+![Hover Button](assets/screenshots/start_screen_20241228_230922.png)
+
+### Gameplay
+![Just Started](assets/screenshots/game_in_progress_moves_0_20241228_231041.png)
+![Bonus Food](assets/screenshots/game_in_progress_moves_4_20241228_231105.png)
+![Particles](assets/screenshots/game_in_progress_score_2_20241228_231622.png)
+![Particles](assets/screenshots/game_in_progress_score_3_20241228_231627.png)
+
+### Game Over States
+![Wall Collision](assets/screenshots/game_over_score_1_20241228_231404.png)
+![Self Collision](assets/screenshots/game_over_score_16_20241228_231354.png)
 
 ## 🎥 Demo
-...
+![Demo](assets/demo/tic-tac-toe-demo.gif)
 
 ## 🛠️ Technical Details
 - Python version: 3.12

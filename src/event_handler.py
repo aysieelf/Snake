@@ -4,6 +4,8 @@ from src.utils import constants as c
 
 import pygame
 
+from src.utils.screenshot import ScreenshotManager
+
 
 class EventHandler:
     """
@@ -14,10 +16,13 @@ class EventHandler:
 
     Attributes:
         game_state (GameState): The current game state
+        screenshot_manager (ScreenshotManager): The screenshot manager to take screenshots
+
     """
 
     def __init__(self, game_state: GameState) -> None:
         self.game_state = game_state
+        self.screenshot_manager = ScreenshotManager()
 
     def handle_events(self) -> bool:
         """
@@ -51,6 +56,7 @@ class EventHandler:
                 - A key or LEFT arrow key: Move the snake left
                 - S key or DOWN arrow key: Move the snake down
                 - D key or RIGHT arrow key: Move the snake right
+                - C key: Take a screenshot
                 - SPACE key: Pause or start the game
 
 
@@ -77,6 +83,13 @@ class EventHandler:
             pygame.K_RIGHT,
         ]:
             self._handle_direction_change(event.key)
+
+        # Take a screenshot
+        elif event.key == pygame.K_c:
+            if hasattr(self, "screenshot_manager"):
+                self.screenshot_manager.capture_game_state(
+                    pygame.display.get_surface(), self.game_state
+                )
 
         # Pause or start the game
         elif event.key == pygame.K_SPACE:
