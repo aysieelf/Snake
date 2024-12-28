@@ -85,6 +85,12 @@ class EventHandler:
         return True
 
     def _handle_exit_game(self) -> bool:
+        """
+        Handle the exit game event
+
+        Returns:
+            bool: True if the game should continue, False if the game should end
+        """
         if not self.game_state.start_screen:
             self.game_state.pause_game()
             self.game_state.exit_to_start_screen()
@@ -93,6 +99,12 @@ class EventHandler:
             return False
 
     def _handle_direction_change(self, key: int) -> None:
+        """
+        Handle the direction change of the snake
+
+        Args:
+            key (int): The key pressed by the user
+        """
         if key == pygame.K_w or key == pygame.K_UP:
             self.game_state.snake.change_direction(c.UP)
         elif key == pygame.K_a or key == pygame.K_LEFT:
@@ -103,6 +115,12 @@ class EventHandler:
             self.game_state.snake.change_direction(c.RIGHT)
 
     def _handle_space_key(self) -> None:
+        """
+        Handle the space key press event
+        If the game is not paused, pause the game
+        If the game is paused, continue the game
+        If the game is in the start screen, start the game
+        """
         if not self.game_state.paused:
             self.game_state.pause_game()
             return
