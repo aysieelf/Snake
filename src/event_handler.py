@@ -1,10 +1,9 @@
 from src.core.game_state import GameState
 from src.ui.ui_components import get_start_button_rect
 from src.utils import constants as c
+from src.utils.screenshot import ScreenshotManager
 
 import pygame
-
-from src.utils.screenshot import ScreenshotManager
 
 
 class EventHandler:
