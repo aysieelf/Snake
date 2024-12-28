@@ -2,7 +2,10 @@ from random import randint, uniform
 
 
 class Particle:
-    def __init__(self, x, y, color):
+    """
+    A simple particle class that represents a single particle in the particle system.
+    """
+    def __init__(self, x: int, y: int, color: tuple):
         self.x = x
         self.y = y
         self.velocity_x = uniform(-2, 2)
@@ -12,7 +15,13 @@ class Particle:
         self.color = color
         self.size = 2
 
-    def update(self):
+    def update(self) -> bool:
+        """
+        Update the particle's position and lifetime.
+
+        Returns:
+            bool: True if the particle is still alive, False otherwise.
+        """
         self.x += self.velocity_x
         self.y += self.velocity_y
 
