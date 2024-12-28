@@ -23,6 +23,8 @@ GRID_COLOR = (240, 240, 240)  # for grid
 BACKGROUND = (253, 245, 230)  # for background
 
 # SNAKE -----------------------------------------------------------------------
+SNAKE_SIZE = 2
+
 UP = (0, -1)
 DOWN = (0, 1)
 LEFT = (-1, 0)
