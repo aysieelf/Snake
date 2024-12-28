@@ -61,17 +61,6 @@ python main.py
 - Q - Quit to main menu / Exit game
 - Space - Start game / Pause/Resume game
 
-## ⏳ Current Progress
-[▓▓▓▓▓▓▓▓▓░] 90%
-
-- [x] Project setup
-- [x] Snake implementation
-- [x] Food & Growth mechanics
-- [x] Collision & Game Over
-- [x] Pause & Restart
-- [x] UI & Polish
-- [x] Testing & Documentation
-
 ## 🎯 Project Goals
 - Create a classic Snake game with smooth controls
 - Master PyGame collision detection
