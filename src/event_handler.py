@@ -16,7 +16,8 @@ class EventHandler:
 
     Attributes:
         game_state (GameState): The current game state
-        screenshot_manager (ScreenshotManager): The screenshot manager to take screenshots
+        screenshot_manager (ScreenshotManager): The screenshot manager
+                to take screenshots
 
     """
 
