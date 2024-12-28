@@ -62,7 +62,7 @@ python main.py
 - Space - Start game / Pause/Resume game
 
 ## ⏳ Current Progress
-[▓▓▓▓▓▓▓▓░░] 80%
+[▓▓▓▓▓▓▓▓▓░] 90%
 
 - [x] Project setup
 - [x] Snake implementation
@@ -70,7 +70,7 @@ python main.py
 - [x] Collision & Game Over
 - [x] Pause & Restart
 - [x] UI & Polish
-- [ ] Testing & Documentation
+- [x] Testing & Documentation
 
 ## 🎯 Project Goals
 - Create a classic Snake game with smooth controls
@@ -131,7 +131,8 @@ python main.py
 ![Self Collision](assets/screenshots/game_over_score_16_20241228_231354.png)
 
 ## 🎥 Demo
-![Demo](assets/demo/tic-tac-toe-demo.gif)
+![Demo Part 1](assets/demo/snake-demo-beginning.gif)
+![Demo Part 2](assets/demo/snake-demo-ending.gif)
 
 ## 🛠️ Technical Details
 - Python version: 3.12
