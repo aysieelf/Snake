@@ -4,10 +4,6 @@ A classic Snake game built with PyGame - my second game!
 
 ## 📑 Table of Contents
 - [Installation](#-installation)
-  - [Prerequisites](#prerequisites)
-  - [Step-by-Step Installation](#step-by-step-installation)
-  - [Running the Game](#running-the-game)
-  - [Controls](#controls)
 - [Current Progress](#-current-progress)
 - [Project Goals](#-project-goals)
 - [Features](#-features)
@@ -23,6 +19,13 @@ A classic Snake game built with PyGame - my second game!
 ### Prerequisites
 - Python 3.12 or higher
 - pip (Python package installer)
+- PyGame 2.6.1
+
+To verify your Python installation:
+```bash
+python --version
+pip --version
+```
 
 ### Step-by-Step Installation
 1. Clone the repository:
@@ -83,21 +86,24 @@ python main.py
 - Game over & restart functionality
 - Pause/Resume game option
 - Food spawning system
+- Particle effects when collecting food
+- Bonus food with special effects
 
 ## 📚 Documentation
 - [User Guide](docs/user-guide.md) - Detailed instructions on how to play the game
 
 ## 📚 What I Learned
 - pygame.time.Clock for frame rate control - `pygame.time.Clock.tick()`
-  - this is used to control the speed of the game
-- Grid-based movement system
+  - Used to control the game's speed and ensure consistent performance
+- Grid-based movement system implementation
 - Collision detection with walls and self
-- Game state management
+- Game state management patterns
 - Pause/Resume game functionality
-- Food spawning system
+- Food spawning system with random positioning
 - Clean code organization in game development
-- How to create Particles in PyGame
-- Be careful what, when and where you reset objects and game state
+- Particle system implementation in PyGame
+- State management and proper object resetting
+- Event handling in PyGame
 
 ## 💡 First Time Achievements
 - First time implementing a grid-based movement system
@@ -106,6 +112,7 @@ python main.py
 - First time implementing a food spawning system
 - First time implementing a growing snake mechanic
 - First time implementing particles in PyGame for effects
+- First time handling complex game states
 
 ## 📸 Screenshots
 ...
@@ -116,6 +123,10 @@ python main.py
 ## 🛠️ Technical Details
 - Python version: 3.12
 - PyGame version: 2.6.1
+- Development Platform: PyCharm
+- Resolution: 400x400 pixels
+- Frame Rate: 60 FPS
+- Grid Size: 20x20 cells
 
 ---
 Part of my [Game Development Journey](https://github.com/aysieelf/Game-Dev-Journey) 🎮
