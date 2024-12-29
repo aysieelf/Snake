@@ -239,6 +239,7 @@ fabric.properties
 # Ignore pyinstaller folders
 .dist/
 .build/
+!releases/
 
 # OS generated files #
 ######################

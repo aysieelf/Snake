@@ -3,8 +3,12 @@
 A classic Snake game built with PyGame - my second game!
 
 ## 📑 Table of Contents
-- [Installation](#-installation)
-- [Current Progress](#-current-progress)
+- [Quick Start (Just Play)](#-quick-start-just-play)
+- [Development Setup](#-development-setup)
+  - [Prerequisites](#prerequisites)
+  - [Step-by-Step Installation](#step-by-step-installation)
+  - [Running the Game](#running-the-game)
+  - [Controls](#controls)
 - [Project Goals](#-project-goals)
 - [Features](#-features)
 - [Documentation](#-documentation)
@@ -14,7 +18,14 @@ A classic Snake game built with PyGame - my second game!
 - [Demo](#-demo)
 - [Technical Details](#-technical-details)
 
-## 🚀 Installation
+## 🎮 Quick Start (Just Play)
+Download the game:
+- **macOS**: Download `Snake.app` from [Releases](https://github.com/aysieelf/Snake/releases)
+  - Double click to run
+  - Note: First launch might take a few seconds
+
+## 🚀 Development Setup
+If you want to explore or modify the code:
 
 ### Prerequisites
 - Python 3.12 or higher
