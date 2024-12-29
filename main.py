@@ -1,14 +1,16 @@
 import os
 import sys
-import pygame
 
 from src.core.game_loop import game_loop
 from src.core.game_state import GameState
 from src.utils import constants as c
 
+import pygame
+
 # To create a standalone executable:
-# pyinstaller --windowed --onedir --name "Snake" 
+# pyinstaller --windowed --onedir --name "Snake"
 # --icon=assets/images/icon-macos.icns --add-data "assets:assets" main.py
+
 
 def get_resource_path() -> str:
     """
@@ -17,7 +19,7 @@ def get_resource_path() -> str:
     Returns:
         str: The path to the resource directory
     """
-    if getattr(sys, 'frozen', False):
+    if getattr(sys, "frozen", False):
         return os.path.dirname(sys.executable)
     return os.path.dirname(os.path.abspath(__file__))
 
@@ -30,7 +32,7 @@ def main() -> None:
     os.chdir(get_resource_path())
 
     pygame.init()
-    pygame.display.set_icon(pygame.image.load('assets/images/icon.png'))
+    pygame.display.set_icon(pygame.image.load("assets/images/icon.png"))
     screen = pygame.display.set_mode((c.WINDOW_SIZE, c.WINDOW_SIZE))
     pygame.display.set_caption("Snake")
     clock = pygame.time.Clock()
@@ -42,6 +44,7 @@ def main() -> None:
     except Exception as e:
         print(f"Error: {e}", file=sys.stderr)
         import traceback
+
         traceback.print_exc()
     finally:
         pygame.quit()
