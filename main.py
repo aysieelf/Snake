@@ -7,7 +7,8 @@ from src.core.game_state import GameState
 from src.utils import constants as c
 
 # To create a standalone executable:
-# pyinstaller --windowed --onedir --name "Snake" --icon=assets/images/icon-macos.icns --add-data "assets:assets" main.py
+# pyinstaller --windowed --onedir --name "Snake" 
+# --icon=assets/images/icon-macos.icns --add-data "assets:assets" main.py
 
 def get_resource_path() -> str:
     """
