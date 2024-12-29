@@ -236,6 +236,10 @@ fabric.properties
 # Ignore .vscode folder
 .vscode/
 
+# Ignore pyinstaller folders
+.dist/
+.build/
+
 # OS generated files #
 ######################
 .DS_Store
