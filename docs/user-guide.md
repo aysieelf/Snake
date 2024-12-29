@@ -9,6 +9,11 @@ The game ends if the snake collides with the walls or itself.
 Bonus food items provide extra points and add a challenge to the gameplay.
 
 ## Getting Started
+### If you have downloaded the .app game file:
+1. Double-click the `Snake.app` file to launch the game
+2. If you're starting it for the first time, right-click on the app icon and select "Open" to bypass security warnings
+
+### If you have the source code:
 1. Launch the game by running `python main.py`
 2. Click the "start game" button on the welcome screen to begin
 
