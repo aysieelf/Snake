@@ -20,14 +20,16 @@ A classic Snake game built with PyGame - my second game!
 
 ## 🎮 Quick Start (Just Play)
 Download the game:
-- **macOS**: Download `Snake.app` from [Releases](https://github.com/aysieelf/Snake/releases/tag/1.0.0)
-  - After downloading, locate Snake.app in Finder. 
+- **macOS**: Download `Snake.zip` from [Releases](https://github.com/aysieelf/Snake/releases/tag/1.0.0)
+  - After downloading, locate Snake.zip in Finder. Unzip the file.
   - When opening for the first time:
     - Right-click (or Control-click) on the app and select Open. 
     - In the pop-up dialog, confirm by clicking Open. 
     - This step is necessary because the app is not notarized by Apple. (_and I'm too poor to pay for it_ 😅)
     - Note: First launch might take a few seconds.
   - Afterward, you can open the app normally by double-clicking.
+- **Windows**: Download `Snake.zip` from [Releases](https://github.com/aysieelf/Snake/releases/tag/1.0.0-windows)
+- After downloading, locate the Snake.zip, unzip and double-click. You're set to go!
 
 ## 🚀 Development Setup
 If you want to explore or modify the code:
@@ -76,6 +78,7 @@ python main.py
 - R - Restart game
 - Q - Quit to main menu / Exit game
 - Space - Start game / Pause/Resume game
+- C - Capture a Screenshot while playing
 
 ## 🎯 Project Goals
 - Create a classic Snake game with smooth controls
