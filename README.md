@@ -20,7 +20,7 @@ A classic Snake game built with PyGame - my second game!
 
 ## 🎮 Quick Start (Just Play)
 Download the game:
-- **macOS**: Download `Snake.app` from [Releases](https://github.com/aysieelf/Snake/releases/tag/1.0.0)
+- **macOS**: Download `Snake.zip` from [Releases](https://github.com/aysieelf/Snake/releases/tag/1.0.0)
   - After downloading, locate Snake.app in Finder. 
   - When opening for the first time:
     - Right-click (or Control-click) on the app and select Open. 
@@ -28,6 +28,15 @@ Download the game:
     - This step is necessary because the app is not notarized by Apple. (_and I'm too poor to pay for it_ 😅)
     - Note: First launch might take a few seconds.
   - Afterward, you can open the app normally by double-clicking.
+- **Windows**: Download `Snake.zip` from [Releases](https://github.com/aysieelf/Snake/releases/tag/1.0.0-windows)
+  - After downloading, extract the contents of the zip file.
+  - Locate and run `Snake.exe`.
+  - When downloading the game, your antivirus might flag it as suspicious. This is a "false positive" - the game is completely safe! This happens because the game is packaged with PyInstaller, which bundles Python and all dependencies into a single executable file.
+  - If this happens, you can:
+    - Add the game to your antivirus whitelist/exceptions
+    - Temporarily disable your antivirus while installing
+    - Use the source code version instead (follow the Development Setup instructions)
+
 
 ## 🚀 Development Setup
 If you want to explore or modify the code:
